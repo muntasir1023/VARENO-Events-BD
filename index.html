@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite Wedding & Event Agency | Full-Service Management</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap');
+        
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
+        
+        .hero-gradient {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md shadow-sm">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold tracking-tighter text-gold-600">ELITE<span class="font-light">EVENTS</span></div>
+            <div class="hidden md:flex space-x-8 font-medium text-sm uppercase tracking-widest">
+                <a href="#services" class="hover:text-amber-600 transition">Services</a>
+                <a href="#how-it-works" class="hover:text-amber-600 transition">How it Works</a>
+                <a href="#venues" class="hover:text-amber-600 transition">Venues</a>
+                <a href="#contact" class="bg-amber-600 text-white px-5 py-2 rounded-full hover:bg-amber-700 transition">Book Consultation</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero-gradient h-screen flex items-center justify-center text-center text-white px-4">
+        <div class="max-w-3xl">
+            <h1 class="text-5xl md:text-7xl mb-6">Your Vision, Our Mastery.</h1>
+            <p class="text-lg md:text-xl mb-8 font-light italic">Connecting you with the finest venues, photographers, and artisans for an unforgettable celebration.</p>
+            <a href="#contact" class="inline-block border-2 border-white px-8 py-3 text-lg hover:bg-white hover:text-black transition duration-300">Plan Your Event</a>
+        </div>
+    </header>
+
+    <section id="services" class="py-24 max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl mb-4">Complete Event Curation</h2>
+            <p class="text-slate-500 max-w-xl mx-auto">We partner with the industry's best to bring you a seamless experience.</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-12">
+            <div class="group cursor-pointer">
+                <div class="overflow-hidden mb-4 rounded-lg">
+                    <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=600&q=80" class="group-hover:scale-105 transition duration-500">
+                </div>
+                <h3 class="text-2xl mb-2">Premium Venues</h3>
+                <p class="text-slate-600 leading-relaxed">Exclusive access to grand ballrooms, secret gardens, and luxury estates.</p>
+            </div>
+
+            <div class="group cursor-pointer">
+                <div class="overflow-hidden mb-4 rounded-lg">
+                    <img src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?auto=format&fit=crop&w=600&q=80" class="group-hover:scale-105 transition duration-500">
+                </div>
+                <h3 class="text-2xl mb-2">Photo & Cinema</h3>
+                <p class="text-slate-600 leading-relaxed">Top-tier visual storytellers to capture every candid emotion and detail.</p>
+            </div>
+
+            <div class="group cursor-pointer">
+                <div class="overflow-hidden mb-4 rounded-lg">
+                    <img src="https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&w=600&q=80" class="group-hover:scale-105 transition duration-500">
+                </div>
+                <h3 class="text-2xl mb-2">Artisan Catering</h3>
+                <p class="text-slate-600 leading-relaxed">Gourmet menus and breathtaking floral designs tailored to your taste.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-slate-900 text-white py-20 px-6">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-8 text-center">
+            <div>
+                <div class="text-4xl font-bold mb-2">50+</div>
+                <p class="text-slate-400 uppercase text-xs tracking-widest">Partner Venues</p>
+            </div>
+            <div>
+                <div class="text-4xl font-bold mb-2">200+</div>
+                <p class="text-slate-400 uppercase text-xs tracking-widest">Successful Events</p>
+            </div>
+            <div>
+                <div class="text-4xl font-bold mb-2">15+</div>
+                <p class="text-slate-400 uppercase text-xs tracking-widest">Expert Photographers</p>
+            </div>
+            <div>
+                <div class="text-4xl font-bold mb-2">100%</div>
+                <p class="text-slate-400 uppercase text-xs tracking-widest">Stress-Free Guarantee</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-24 bg-white px-6">
+        <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-16">
+            <div>
+                <h2 class="text-4xl mb-6">Let's build your perfect day.</h2>
+                <p class="text-slate-600 mb-8 leading-relaxed text-lg">Tell us about your event. Our agents will coordinate with our network of vendors to provide you with a comprehensive quote within 24 hours.</p>
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-4">
+                        <i class="fa-solid fa-phone text-amber-600"></i>
+                        <span>+1 (555) 000-1234</span>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <i class="fa-solid fa-envelope text-amber-600"></i>
+                        <span>hello@eliteevents.com</span>
+                    </div>
+                </div>
+            </div>
+
+            <form class="bg-slate-50 p-8 rounded-xl shadow-inner border border-slate-100">
+                <div class="grid gap-4">
+                    <input type="text" placeholder="Full Name" class="p-3 border rounded focus:ring-2 focus:ring-amber-600 outline-none">
+                    <input type="email" placeholder="Email Address" class="p-3 border rounded focus:ring-2 focus:ring-amber-600 outline-none">
+                    <select class="p-3 border rounded focus:ring-2 focus:ring-amber-600 outline-none">
+                        <option>Wedding Ceremony</option>
+                        <option>Corporate Gala</option>
+                        <option>Photo Shooting Agency Session</option>
+                    </select>
+                    <textarea placeholder="Tell us about your event..." rows="4" class="p-3 border rounded focus:ring-2 focus:ring-amber-600 outline-none"></textarea>
+                    <button class="bg-slate-900 text-white py-4 font-bold hover:bg-black transition">Submit Inquiry</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <footer class="py-12 border-t border-slate-200 text-center text-slate-500 text-sm">
+        <div class="mb-6 space-x-6 text-xl">
+            <i class="fa-brands fa-instagram hover:text-amber-600 cursor-pointer"></i>
+            <i class="fa-brands fa-facebook hover:text-amber-600 cursor-pointer"></i>
+            <i class="fa-brands fa-pinterest hover:text-amber-600 cursor-pointer"></i>
+        </div>
+        <p>&copy; 2026 Elite Events Management Agency. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
