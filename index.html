@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elite Events | Bangladesh's Premier Management Collective</title>
-    <meta name="description" content="Articulating the moment. The premier luxury event management collective in Bangladesh.">
+    <title>Elite Events | Bangladesh's Premier Wedding & Event Collective</title>
+    <meta name="description" content="Articulating the moment. The premier luxury wedding management collective in Bangladesh.">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,7 +30,7 @@
                         sans: ['"Plus Jakarta Sans"', 'sans-serif'],
                     },
                     backgroundImage: {
-                        'hero-pattern': "url('https://images.unsplash.com/photo-1545232979-8bf68ee9b1af?q=80&w=2070&auto=format&fit=crop')",
+                        'hero-pattern': "url('https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070&auto=format&fit=crop')",
                     }
                 }
             }
@@ -81,9 +81,43 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #c5a059; 
         }
+
+        #legal-modal {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(12px);
+        }
+        #legal-modal.hidden {
+            display: none;
+            opacity: 0;
+            pointer-events: none;
+        }
+        #legal-modal.visible {
+            display: block;
+            opacity: 1;
+            pointer-events: auto;
+        }
     </style>
 </head>
 <body class="bg-stone text-charcoal font-sans antialiased overflow-x-hidden selection:bg-gold selection:text-white">
+
+    <!-- Legal Modal -->
+    <div id="legal-modal" class="fixed inset-0 z-[100] hidden bg-charcoal text-stone px-6 overflow-y-auto">
+        <div class="sticky top-0 bg-charcoal/95 backdrop-blur-md pt-12 pb-6 z-10 border-b border-white/5">
+            <div class="max-w-4xl mx-auto flex justify-between items-center">
+                <button onclick="closeLegal()" class="flex items-center gap-2 text-gold uppercase tracking-widest text-xs hover:text-white transition group">
+                    <svg class="w-5 h-5 transform group-hover:-translate-x-1 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"/>
+                    </svg>
+                    Close & Return
+                </button>
+                <div class="font-serif text-lg italic text-stone/20">Legal Framework & Compliance</div>
+            </div>
+        </div>
+        
+        <div class="max-w-4xl mx-auto py-12 pb-32">
+            <div id="legal-content" class="max-w-none"></div>
+        </div>
+    </div>
 
     <!-- Navigation -->
     <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 border-b border-white/10 backdrop-blur-md bg-charcoal/90">
@@ -95,18 +129,19 @@
                     </a>
                 </div>
                 
-                <div class="hidden md:flex space-x-12 items-center">
-                    <a href="#agency" class="text-sm uppercase tracking-widest text-white/80 hover:text-gold transition duration-300">The Agency</a>
-                    <a href="#expertise" class="text-sm uppercase tracking-widest text-white/80 hover:text-gold transition duration-300">Expertise</a>
-                    <a href="#archive" class="text-sm uppercase tracking-widest text-white/80 hover:text-gold transition duration-300">Archive</a>
-                    <a href="#methodology" class="text-sm uppercase tracking-widest text-white/80 hover:text-gold transition duration-300">Methodology</a>
+                <div class="hidden lg:flex space-x-10 items-center">
+                    <a href="#agency" class="text-[10px] uppercase tracking-[0.2em] text-white/80 hover:text-gold transition duration-300">The Agency</a>
+                    <a href="#expertise" class="text-[10px] uppercase tracking-[0.2em] text-white/80 hover:text-gold transition duration-300">What We Do?</a>
+                    <a href="#archive" class="text-[10px] uppercase tracking-[0.2em] text-white/80 hover:text-gold transition duration-300">Our Masterworks</a>
+                    <a href="#methodology" class="text-[10px] uppercase tracking-[0.2em] text-white/80 hover:text-gold transition duration-300">The Wedding Protocol</a>
+                    <a href="#contact" class="bg-gold text-charcoal px-6 py-2 text-[10px] uppercase tracking-widest font-bold hover:bg-white transition duration-300">Book Now</a>
                 </div>
 
-                <div class="hidden md:flex">
-                    <a href="#contact" class="font-serif italic text-gold text-lg hover-underline-animation">Contact Now</a>
+                <div class="hidden lg:flex">
+                    <a href="#contact" class="font-serif italic text-gold text-lg hover-underline-animation">Inquire Now</a>
                 </div>
 
-                <div class="md:hidden flex items-center">
+                <div class="lg:hidden flex items-center">
                     <button id="mobile-menu-btn" class="text-white hover:text-gold focus:outline-none">
                         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4 6h16M4 12h16M4 18h16" />
@@ -116,163 +151,178 @@
             </div>
         </div>
         
-        <div id="mobile-menu" class="hidden md:hidden bg-charcoal border-t border-white/10">
+        <div id="mobile-menu" class="hidden lg:hidden bg-charcoal border-t border-white/10">
             <div class="px-6 pt-8 pb-12 space-y-6 flex flex-col items-center">
-                <a href="#agency" class="text-white text-lg hover:text-gold transition">The Agency</a>
-                <a href="#expertise" class="text-white text-lg hover:text-gold transition">Expertise</a>
-                <a href="#archive" class="text-white text-lg hover:text-gold transition">Archive</a>
-                <a href="#methodology" class="text-white text-lg hover:text-gold transition">Methodology</a>
-                <a href="#contact" class="text-gold font-serif italic text-xl mt-4">Inquire Now</a>
+                <a href="#agency" onclick="toggleMenu()" class="text-white text-lg hover:text-gold transition">The Agency</a>
+                <a href="#expertise" onclick="toggleMenu()" class="text-white text-lg hover:text-gold transition">What We Do?</a>
+                <a href="#archive" onclick="toggleMenu()" class="text-white text-lg hover:text-gold transition">Our Masterworks</a>
+                <a href="#methodology" onclick="toggleMenu()" class="text-white text-lg hover:text-gold transition">The Wedding Protocol</a>
+                <a href="#contact" onclick="toggleMenu()" class="text-gold font-serif italic text-xl mt-4">Book Consultation</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <header class="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden">
-        <div class="absolute inset-0 bg-hero-pattern bg-cover bg-center bg-fixed transform scale-105"></div>
+        <div class="absolute inset-0 bg-hero-pattern bg-cover bg-center bg-fixed transform scale-100 transition-transform duration-1000"></div>
         <div class="absolute inset-0 bg-black/50"></div>
         
         <div class="relative z-10 text-center px-6 reveal active">
-            <p class="text-stone/80 uppercase tracking-[0.3em] text-xs md:text-sm mb-6">Management & Media Collective | Bangladesh</p>
-            <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl text-stone leading-tight mb-8">
-                Articulating <br>
-                <span class="italic text-gold">The Moment</span>
+            <div class="mb-6">
+                <span class="text-gold uppercase tracking-[0.4em] text-[10px] md:text-xs font-bold">Premier Wedding Collective</span>
+                <div class="flex justify-center items-center gap-4 mt-2 text-stone/80 font-light text-sm tracking-widest">
+                    <span>DHAKA</span>
+                    <span class="w-1 h-1 bg-gold rounded-full"></span>
+                    <span>TANGAIL</span>
+                    <span class="w-1 h-1 bg-gold rounded-full"></span>
+                    <span>RANGPUR</span>
+                </div>
+            </div>
+            <h1 class="font-serif text-5xl md:text-7xl lg:text-9xl text-stone leading-tight mb-8">
+                Ethereal <br>
+                <span class="italic text-gold">Celebrations</span>
             </h1>
-            <div class="h-16 w-[1px] bg-stone/30 mx-auto mt-8"></div>
+            <div class="h-16 w-[1px] bg-gold mx-auto mt-8"></div>
         </div>
     </header>
 
     <!-- The Agency (About) -->
     <section id="agency" class="py-24 md:py-32 bg-stone relative">
-        <div class="max-w-7xl mx-auto px-6 lg:px-12">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                <div class="reveal">
-                    <h2 class="font-serif text-4xl md:text-5xl text-charcoal mb-8 leading-snug">
-                        A curated ecosystem <br>
-                        for the <span class="italic text-gold">exceptional.</span>
-                    </h2>
-                    <div class="w-12 h-[1px] bg-charcoal mb-8"></div>
-                </div>
-                <div class="reveal delay-100">
-                    <p class="text-charcoal/80 text-lg leading-relaxed font-light mb-6">
-                        Elite Events operates as the singular interface between high-net-worth clients and Bangladesh's most exclusive artisans. We are a "Service Aggregator" offering not just coordination, but the assurance of vetted quality and legal integrity.
-                    </p>
-                    <p class="text-charcoal/80 text-lg leading-relaxed font-light">
-                        From private estates in Gulshan to coastal sanctuaries in Cox's Bazar, we manage the entire ecosystem—contracting, liability, and execution—so you remain unburdened by the complexities of production.
-                    </p>
-                </div>
+        <div class="max-w-4xl mx-auto px-6 lg:px-12 text-center">
+            <div class="reveal">
+                <h2 class="font-serif text-4xl md:text-5xl text-charcoal mb-8 leading-snug">
+                    Bespoke wedding <br>
+                    curation for the <span class="italic text-gold">discerning.</span>
+                </h2>
+                <div class="w-12 h-[1px] bg-charcoal mb-8 mx-auto"></div>
+                <p class="text-charcoal/80 text-xl leading-relaxed font-light mb-6">
+                    Elite Events provides a high-protocol interface for luxury weddings across Bangladesh. We blend heritage aesthetics with modern management to ensure your union is a masterwork of precision.
+                </p>
+                <p class="text-charcoal/60 text-base leading-relaxed font-light max-w-2xl mx-auto">
+                    From the grand zamindar estates to urban luxury ballrooms, we mobilize a vetted network of culinary masters, cinematic storytellers, and artisanal decorators.
+                </p>
             </div>
         </div>
     </section>
 
-    <!-- Expertise (Services) -->
+    <!-- What We Do? (Services) -->
     <section id="expertise" class="py-24 md:py-32 bg-white">
         <div class="max-w-7xl mx-auto px-6 lg:px-12">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-24">
+            <div class="mb-16 reveal">
+                <h2 class="font-serif text-4xl md:text-5xl text-charcoal">What <span class="italic text-gold">We Do?</span></h2>
+                <div class="w-12 h-[1px] bg-gold mt-6"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
                 <div class="group reveal">
                     <div class="font-serif text-gold text-2xl italic mb-4">01.</div>
-                    <h3 class="font-serif text-2xl text-charcoal mb-4 group-hover:text-gold transition duration-300">Venue Acquisition</h3>
-                    <p class="text-charcoal/70 font-light leading-relaxed">
-                        Exclusive access to Bangladesh's off-market estates, heritage mansions, and luxury resorts. We handle the "Venue Partnership Deals" and exclusivity clauses.
+                    <h3 class="font-serif text-xl text-charcoal mb-4 group-hover:text-gold transition duration-300">Heritage Venues</h3>
+                    <p class="text-charcoal/70 font-light text-sm leading-relaxed mb-6">
+                        Access to exclusive zamindar estates and private retreats decorated with floral grandeur for high-society unions.
                     </p>
+                    <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=800&auto=format&fit=crop" alt="Floral Heritage Venue Decor" class="w-full aspect-[4/3] object-cover grayscale group-hover:grayscale-0 transition duration-500">
                 </div>
                 <div class="group reveal delay-100">
                     <div class="font-serif text-gold text-2xl italic mb-4">02.</div>
-                    <h3 class="font-serif text-2xl text-charcoal mb-4 group-hover:text-gold transition duration-300">Media Collective</h3>
-                    <p class="text-charcoal/70 font-light leading-relaxed">
-                        An in-house editorial team dedicated to capturing the narrative. Includes full copyright management and asset delivery for high-fidelity media.
+                    <h3 class="font-serif text-xl text-charcoal mb-4 group-hover:text-gold transition duration-300">Cinematic Memory</h3>
+                    <p class="text-charcoal/70 font-light text-sm leading-relaxed mb-6">
+                        High-fashion editorial wedding photography and cinematic 4K storytelling. Preserving your legacy with artistic integrity.
                     </p>
+                    <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=600&auto=format&fit=crop" alt="Wedding Photography" class="w-full aspect-[4/3] object-cover grayscale group-hover:grayscale-0 transition duration-500">
                 </div>
                 <div class="group reveal delay-200">
                     <div class="font-serif text-gold text-2xl italic mb-4">03.</div>
-                    <h3 class="font-serif text-2xl text-charcoal mb-4 group-hover:text-gold transition duration-300">Risk & Compliance</h3>
-                    <p class="text-charcoal/70 font-light leading-relaxed">
-                        We provide the legal shield. From vendor indemnification to master service agreements, we ensure every aspect of your event is safe and compliant.
+                    <h3 class="font-serif text-xl text-charcoal mb-4 group-hover:text-gold transition duration-300">Gourmet Banquets</h3>
+                    <p class="text-charcoal/70 font-light text-sm leading-relaxed mb-6">
+                        Curation of generational head chefs. We design bespoke menus ranging from royal traditional feasts to modern fusion dining.
                     </p>
+                    <img src="https://images.unsplash.com/photo-1555244162-803834f70033?q=80&w=600&auto=format&fit=crop" alt="Wedding Catering" class="w-full aspect-[4/3] object-cover grayscale group-hover:grayscale-0 transition duration-500">
+                </div>
+                <div class="group reveal delay-300">
+                    <div class="font-serif text-gold text-2xl italic mb-4">04.</div>
+                    <h3 class="font-serif text-xl text-charcoal mb-4 group-hover:text-gold transition duration-300">Floral Couture</h3>
+                    <p class="text-charcoal/70 font-light text-sm leading-relaxed mb-6">
+                        Architectural floral design and custom structural builds. Transforming environments into immersive, romantic landscapes.
+                    </p>
+                    <img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?q=80&w=600&auto=format&fit=crop" alt="Wedding Decor" class="w-full aspect-[4/3] object-cover grayscale group-hover:grayscale-0 transition duration-500">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Archive (Portfolio) -->
+    <!-- Our Masterworks (Wedding Portfolios) -->
     <section id="archive" class="py-24 md:py-32 bg-charcoal text-stone">
         <div class="max-w-7xl mx-auto px-6 lg:px-12">
             <div class="flex justify-between items-end mb-16 reveal">
-                <h2 class="font-serif text-4xl md:text-5xl">Selected <span class="italic text-gold">Archive</span></h2>
-                <span class="hidden md:block text-xs tracking-widest uppercase text-stone/50">Bangladesh Case Studies 2024-2025</span>
+                <h2 class="font-serif text-4xl md:text-5xl">Our <span class="italic text-gold">Masterworks</span></h2>
+                <span class="hidden md:block text-xs tracking-widest uppercase text-stone/50">Regional Wedding Archive</span>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- DHAKA Wedding -->
                 <div class="group cursor-pointer reveal">
                     <div class="overflow-hidden relative aspect-[4/5] mb-6">
-                        <img src="https://images.unsplash.com/photo-1545232979-8bf68ee9b1af?q=80&w=1000&auto=format&fit=crop" 
-                             alt="The Gulshan Estate" 
+                        <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=1000&auto=format&fit=crop" 
+                             alt="Grand Ballroom Wedding Dhaka" 
                              class="w-full h-full object-cover grayscale group-hover:grayscale-0 scale-100 group-hover:scale-105 transition-all duration-700 ease-in-out">
-                    </div>
-                    <div class="flex justify-between items-start border-t border-stone/20 pt-4">
-                        <div>
-                            <h3 class="font-serif text-2xl mb-1 group-hover:text-gold transition">The Gulshan Estate</h3>
-                            <p class="text-stone/60 font-light text-sm">Dhaka City</p>
+                        <div class="absolute bottom-4 left-4 z-20">
+                            <span class="text-[10px] bg-gold text-charcoal px-2 py-1 uppercase tracking-tighter font-bold">DHAKA: THE ROYAL GALA</span>
                         </div>
-                        <span class="text-xs border border-stone/30 rounded-full px-3 py-1 mt-1">Full Production</span>
+                    </div>
+                    <div class="border-t border-stone/20 pt-4">
+                        <h3 class="font-serif text-2xl mb-2 group-hover:text-gold transition">Dhaka</h3>
+                        <p class="text-stone/60 font-light text-sm leading-relaxed mb-4">
+                            High-profile celebrations utilizing world-class infrastructure, featuring sophisticated lighting, elite service standards, and immersive event concepts.
+                        </p>
                     </div>
                 </div>
 
-                <div class="group cursor-pointer reveal delay-100 mt-0 md:mt-24">
+                <!-- TANGAIL Wedding -->
+                <div class="group cursor-pointer reveal delay-100">
                     <div class="overflow-hidden relative aspect-[4/5] mb-6">
-                        <img src="https://images.unsplash.com/photo-1510076857177-7470076d4098?q=80&w=1000&auto=format&fit=crop" 
-                             alt="Mermaid Beach Sanctuary" 
+                        <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?q=80&w=1000&auto=format&fit=crop" 
+                             alt="Heritage Estate Wedding Tangail" 
                              class="w-full h-full object-cover grayscale group-hover:grayscale-0 scale-100 group-hover:scale-105 transition-all duration-700 ease-in-out">
-                    </div>
-                    <div class="flex justify-between items-start border-t border-stone/20 pt-4">
-                        <div>
-                            <h3 class="font-serif text-2xl mb-1 group-hover:text-gold transition">Mermaid Beach Sanctuary</h3>
-                            <p class="text-stone/60 font-light text-sm">Cox's Bazar</p>
+                        <div class="absolute bottom-4 left-4 z-20">
+                            <span class="text-[10px] bg-gold text-charcoal px-2 py-1 uppercase tracking-tighter font-bold">TANGAIL: HERITAGE UNION</span>
                         </div>
-                        <span class="text-xs border border-stone/30 rounded-full px-3 py-1 mt-1">Destination Gala</span>
+                    </div>
+                    <div class="border-t border-stone/20 pt-4">
+                        <h3 class="font-serif text-2xl mb-2 group-hover:text-gold transition">Tangail</h3>
+                        <p class="text-stone/60 font-light text-sm leading-relaxed mb-4">
+                            Traditional unions within curated historical environments, blending local artisanal heritage with luxury logistics and generational storytelling.
+                        </p>
                     </div>
                 </div>
 
-                <div class="group cursor-pointer reveal">
+                <!-- RANGPUR Wedding -->
+                <div class="group cursor-pointer reveal delay-200">
                     <div class="overflow-hidden relative aspect-[4/5] mb-6">
-                        <img src="https://images.unsplash.com/photo-1590073242678-70ee3fc28e8e?q=80&w=1000&auto=format&fit=crop" 
-                             alt="Grand Sultan Gardens" 
+                        <img src="https://images.unsplash.com/photo-1507504031003-b417219a0fde?q=80&w=1000&auto=format&fit=crop" 
+                             alt="Palace Wedding Rangpur" 
                              class="w-full h-full object-cover grayscale group-hover:grayscale-0 scale-100 group-hover:scale-105 transition-all duration-700 ease-in-out">
-                    </div>
-                    <div class="flex justify-between items-start border-t border-stone/20 pt-4">
-                        <div>
-                            <h3 class="font-serif text-2xl mb-1 group-hover:text-gold transition">Grand Sultan Gardens</h3>
-                            <p class="text-stone/60 font-light text-sm">Sylhet</p>
+                        <div class="absolute bottom-4 left-4 z-20">
+                            <span class="text-[10px] bg-gold text-charcoal px-2 py-1 uppercase tracking-tighter font-bold">RANGPUR: PALACE BANQUET</span>
                         </div>
-                        <span class="text-xs border border-stone/30 rounded-full px-3 py-1 mt-1">Culinary Curation</span>
                     </div>
-                </div>
-
-                <div class="group cursor-pointer reveal delay-100 mt-0 md:mt-24">
-                    <div class="overflow-hidden relative aspect-[4/5] mb-6">
-                        <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?q=80&w=1000&auto=format&fit=crop" 
-                             alt="The Heritage Mansion" 
-                             class="w-full h-full object-cover grayscale group-hover:grayscale-0 scale-100 group-hover:scale-105 transition-all duration-700 ease-in-out">
-                    </div>
-                    <div class="flex justify-between items-start border-t border-stone/20 pt-4">
-                        <div>
-                            <h3 class="font-serif text-2xl mb-1 group-hover:text-gold transition">The Heritage Mansion</h3>
-                            <p class="text-stone/60 font-light text-sm">Old Dhaka</p>
-                        </div>
-                        <span class="text-xs border border-stone/30 rounded-full px-3 py-1 mt-1">Venue Acquisition</span>
+                    <div class="border-t border-stone/20 pt-4">
+                        <h3 class="font-serif text-2xl mb-2 group-hover:text-gold transition">Rangpur</h3>
+                        <p class="text-stone/60 font-light text-sm leading-relaxed mb-4">
+                            Stately productions highlighting architectural grandeur and expansive outdoor landscapes, governed by high-protocol standards and royal aesthetics.
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Methodology -->
+    <!-- Methodology / The Wedding Protocol -->
     <section id="methodology" class="py-24 md:py-32 bg-stone">
         <div class="max-w-7xl mx-auto px-6 lg:px-12">
             <div class="mb-16 reveal">
-                <h2 class="font-serif text-4xl md:text-5xl text-charcoal">Operational <span class="italic text-gold">Framework</span></h2>
+                <h2 class="font-serif text-4xl md:text-5xl text-charcoal">The Wedding <span class="italic text-gold">Protocol</span></h2>
                 <p class="text-charcoal/60 mt-4 max-w-2xl font-light">
-                    Our "Middleman Workflow" ensures absolute transparency and protection. We act as your single point of accountability.
+                    Meticulously managing the total lifecycle of your union from concept to heritage archive.
                 </p>
             </div>
 
@@ -280,44 +330,44 @@
                 <div class="flex flex-col md:flex-row border-b border-charcoal/10 pb-12 reveal">
                     <div class="w-full md:w-1/4 font-serif text-5xl text-charcoal/10">01</div>
                     <div class="w-full md:w-1/4 pt-2 md:pt-4">
-                        <h4 class="font-serif text-2xl text-charcoal">Vision & Terms</h4>
+                        <h4 class="font-serif text-2xl text-charcoal">Conceptualization</h4>
                     </div>
                     <div class="w-full md:w-2/4 pt-2 md:pt-4">
                         <p class="text-charcoal/70 font-light">
-                            We initiate with a comprehensive Vision Alignment and the Master Service Agreement to establish the legal "Shield" for your event.
+                            Creative direction and site selection. We design the visual narrative and establish the guest logistical framework for multi-day events.
                         </p>
                     </div>
                 </div>
                 <div class="flex flex-col md:flex-row border-b border-charcoal/10 pb-12 reveal delay-100">
                     <div class="w-full md:w-1/4 font-serif text-5xl text-charcoal/10">02</div>
                     <div class="w-full md:w-1/4 pt-2 md:pt-4">
-                        <h4 class="font-serif text-2xl text-charcoal">Strategic Procurement</h4>
+                        <h4 class="font-serif text-2xl text-charcoal">Artisanal Mobilization</h4>
                     </div>
                     <div class="w-full md:w-2/4 pt-2 md:pt-4">
                         <p class="text-charcoal/70 font-light">
-                            We execute Subcontractor Agreements with our vetted artisan network, managing all quality standard clauses.
+                            Vetting of specialty cooks and flower sourcing. Our construction teams begin structural decor builds under architectural supervision.
                         </p>
                     </div>
                 </div>
                 <div class="flex flex-col md:flex-row border-b border-charcoal/10 pb-12 reveal delay-200">
                     <div class="w-full md:w-1/4 font-serif text-5xl text-charcoal/10">03</div>
                     <div class="w-full md:w-1/4 pt-2 md:pt-4">
-                        <h4 class="font-serif text-2xl text-charcoal">Execution Phase</h4>
+                        <h4 class="font-serif text-2xl text-charcoal">The Celebration</h4>
                     </div>
                     <div class="w-full md:w-2/4 pt-2 md:pt-4">
                         <p class="text-charcoal/70 font-light">
-                            On-site management is governed by strict Conduct Policies. We oversee the entire safety protocol and operational logistics.
+                            Real-time management of the banquet and visual coverage. Absolute precision in protocol handling for VIP guests and traditional rituals.
                         </p>
                     </div>
                 </div>
-                 <div class="flex flex-col md:flex-row pb-12 reveal delay-300">
+                <div class="flex flex-col md:flex-row pb-12 reveal delay-300">
                     <div class="w-full md:w-1/4 font-serif text-5xl text-charcoal/10">04</div>
                     <div class="w-full md:w-1/4 pt-2 md:pt-4">
-                        <h4 class="font-serif text-2xl text-charcoal">Asset Delivery</h4>
+                        <h4 class="font-serif text-2xl text-charcoal">Heritage Archival</h4>
                     </div>
                     <div class="w-full md:w-2/4 pt-2 md:pt-4">
                         <p class="text-charcoal/70 font-light">
-                            Post-event, we manage the Image/Video Release and deliver your curated media assets, turning your event into a legacy.
+                            High-fidelity post-production of your wedding cinema and photo albums. Final site restoration and legal closures.
                         </p>
                     </div>
                 </div>
@@ -331,11 +381,10 @@
         <div class="relative z-10 max-w-4xl mx-auto px-6 reveal">
             <p class="text-gold uppercase tracking-[0.2em] text-sm mb-8">Strictly By Appointment</p>
             <h2 class="font-serif text-5xl md:text-7xl mb-12 leading-tight">
-                Begin the <br>
-                <span class="italic text-stone/80">Conversation</span>
+                Secure Your <br>
+                <span class="italic text-stone/80">Date</span>
             </h2>
             <div class="flex flex-col space-y-12 mb-16">
-                <!-- Primary Contacts -->
                 <div class="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-16">
                     <a href="mailto:muntasirhasan1023@gmail.com" class="group">
                         <span class="block text-xs uppercase tracking-widest text-stone/50 mb-2">Private Client Inquiries</span>
@@ -343,67 +392,211 @@
                     </a>
                     <div class="hidden md:block w-[1px] h-12 bg-stone/20"></div>
                     <a href="tel:+8801706652530" class="group">
-                        <span class="block text-xs uppercase tracking-widest text-stone/50 mb-2">Dhaka Direct</span>
+                        <span class="block text-xs uppercase tracking-widest text-stone/50 mb-2">Consultation Line</span>
                         <span class="font-serif text-2xl md:text-3xl text-white group-hover:text-gold transition duration-300 border-b border-transparent group-hover:border-gold pb-1">+880 1706 652 530</span>
                     </a>
                 </div>
                 
-                <!-- Quick Connect -->
                 <div class="reveal delay-100">
                     <a href="https://wa.me/8801706652530" target="_blank" class="inline-flex items-center space-x-3 bg-white/5 border border-white/10 px-8 py-4 rounded-full hover:bg-gold hover:text-charcoal transition-all duration-300 group">
-                        <span class="font-serif italic text-lg">Direct WhatsApp Channel</span>
-                        <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                        <span class="font-serif italic text-lg">Instant WhatsApp Channel</span>
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
                     </a>
                 </div>
             </div>
-            <p class="text-stone/40 font-light text-sm max-w-md mx-auto">
-                Currently accepting commissions for the 2026 Season.
-            </p>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-black text-stone/30 py-12 border-t border-white/5">
-        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-xs tracking-widest uppercase">
-            <div class="mb-4 md:mb-0">&copy; 2025 Elite Events Bangladesh.</div>
-            <div class="flex space-x-6">
-                <a href="https://www.linkedin.com/in/muntasirhasan1023" target="_blank" class="hover:text-gold transition">LinkedIn</a>
-                <a href="#" class="hover:text-gold transition">Legal</a>
+    <footer class="bg-black text-stone/30 py-16 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+                <!-- Branding -->
+                <div class="col-span-1 md:col-span-2">
+                    <a href="#" class="font-serif text-2xl tracking-widest text-white mb-6 block">
+                        ELITE<span class="text-gold">.</span>
+                    </a>
+                    <p class="max-w-sm text-sm leading-relaxed mb-6">
+                        The definitive interface for luxury wedding curation in Bangladesh. Meticulously managing the memories that define your legacy.
+                    </p>
+                </div>
+                <!-- Legal -->
+                <div>
+                    <h4 class="text-white text-xs tracking-widest uppercase mb-6">Legal Framework</h4>
+                    <ul class="space-y-4 text-xs">
+                        <li><button onclick="showLegal('privacy')" class="hover:text-gold transition block text-left">Privacy & Data Governance</button></li>
+                        <li><button onclick="showLegal('terms')" class="hover:text-gold transition block text-left">Terms of Service</button></li>
+                        <li><button onclick="showLegal('agreements')" class="hover:text-gold transition block text-left">Master Service Agreements</button></li>
+                        <li><button onclick="showLegal('gdpr')" class="hover:text-gold transition block text-left">GDPR Compliance Notice</button></li>
+                    </ul>
+                </div>
+                <!-- Social & Professional -->
+                <div>
+                    <h4 class="text-white text-xs tracking-widest uppercase mb-6">Connect</h4>
+                    <ul class="space-y-4 text-xs font-serif italic text-white/80">
+                        <li><a href="https://www.facebook.com/eliteeventsbd" target="_blank" class="hover:text-gold transition flex items-center gap-2">
+                            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
+                            Facebook
+                        </a></li>
+                        <li><a href="https://www.linkedin.com/in/muntasirhasan1023" target="_blank" class="hover:text-gold transition flex items-center gap-2">
+                            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z"/></svg>
+                            LinkedIn
+                        </a></li>
+                        <li><a href="#" class="hover:text-gold transition flex items-center gap-2">
+                            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                            Instagram
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-[10px] tracking-[0.2em] uppercase">
+                <div class="mb-4 md:mb-0">&copy; 2026 Elite Events. All Rights Reserved.</div>
+                <div class="text-stone/20">Articulated by the Elite Media Collective.</div>
             </div>
         </div>
     </footer>
 
     <script>
-        const mobileBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        mobileBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
+        const legalData = {
+            privacy: {
+                title: "Privacy & Data Governance",
+                content: `
+                    <h2 class="font-serif text-4xl mb-8 text-stone">Data Governance Protocol</h2>
+                    <p class="text-lg mb-8 font-light leading-relaxed text-stone/80">Elite Events operates a high-fidelity privacy architecture. We understand that our clients are high-net-worth individuals and public figures where privacy is a security requirement.</p>
+                    <div class="space-y-10 text-stone/70">
+                        <section>
+                            <h3 class="text-gold uppercase tracking-widest text-xs font-bold mb-4">I. Information Collection Spectrum</h3>
+                            <p class="font-light leading-relaxed mb-4">We collect: <strong>Identifiers</strong> (names, digital signatures), <strong>Financial Data</strong> (transaction history), <strong>Guest Schematics</strong> (logistics for up to 5,000+ attendees), and <strong>Biometric Media</strong> (raw photographic and video assets).</p>
+                        </section>
+                        <section>
+                            <h3 class="text-gold uppercase tracking-widest text-xs font-bold mb-4">II. Retention & Disposal</h3>
+                            <p class="font-light leading-relaxed mb-4">Sensitive planning data is retained for 12 months post-celebration before being cryptographically purged. Wedding media assets are archived in air-gapped cold storage unless otherwise instructed.</p>
+                        </section>
+                        <section>
+                            <h3 class="text-gold uppercase tracking-widest text-xs font-bold mb-4">III. Third-Party Interfaces</h3>
+                            <p class="font-light leading-relaxed">No data is sold. Limited logistical data is shared with high-protocol logistics partners (VVIP security, catering leads) under strict Non-Disclosure Agreements (NDAs).</p>
+                        </section>
+                    </div>
+                `
+            },
+            terms: {
+                title: "Terms of Service",
+                content: `
+                    <h2 class="font-serif text-4xl mb-8 text-stone">Contractual Engagement Terms</h2>
+                    <p class="text-lg mb-8 font-light leading-relaxed text-stone/80">By entering a consultation with Elite Events, the Client agrees to the following mobilization standards.</p>
+                    <div class="space-y-10 text-stone/70">
+                        <section>
+                            <h3 class="text-gold uppercase tracking-widest text-xs font-bold mb-4">1. Mobilization Deposits</h3>
+                            <p class="font-light leading-relaxed">A non-refundable 30% mobilization fee is required to secure seasonal dates. This covers the initial securing of heritage venues and artisanal bookings.</p>
+                        </section>
+                        <section>
+                            <h3 class="text-gold uppercase tracking-widest text-xs font-bold mb-4">2. Artisanal Autonomy</h3>
+                            <p class="font-light leading-relaxed">Elite Events maintains creative control over technical execution. We guarantee the quality of the 'Elite Standard' but allow artisans the autonomy to ensure structural and safety integrity of floral and built decor.</p>
+                        </section>
+                        <section>
+                            <h3 class="text-gold uppercase tracking-widest text-xs font-bold mb-4">3. Termination Clauses</h3>
+                            <p class="font-light leading-relaxed">Cancellations within 30 days of the event incur a 90% service fee due to the mobilization of perishables and full-time labor deployments.</p>
+                        </section>
+                    </div>
+                `
+            },
+            agreements: {
+                title: "Master Service Agreements",
+                content: `
+                    <h2 class="font-serif text-4xl mb-8 text-stone">Tiered Service Agreements</h2>
+                    <p class="text-lg mb-8 font-light leading-relaxed text-stone/80">Our Master Service Agreement (MSA) outlines the specific benchmarks for our three primary verticals.</p>
+                    <div class="grid md:grid-cols-2 gap-12 text-sm text-stone/70">
+                        <div class="border-l border-gold pl-6">
+                            <h4 class="font-serif text-xl mb-3 text-stone">Vertical A: Culinary Excellence</h4>
+                            <p class="font-light leading-relaxed">Benchmark: 100% adherence to sanitation protocols. Vetting of raw ingredients source-to-plate. Provision of high-society protocol trained silver-service staff (1 staff per 10 guests).</p>
+                        </div>
+                        <div class="border-l border-gold pl-6">
+                            <h4 class="font-serif text-xl mb-3 text-stone">Vertical B: Media Archive</h4>
+                            <p class="font-light leading-relaxed">Benchmark: Redundancy in capture (dual-slot recording). Archival of raw data for 5 years. Editorial delivery of highlight cinema within 15 days of the production.</p>
+                        </div>
+                        <div class="border-l border-gold pl-6">
+                            <h4 class="font-serif text-xl mb-3 text-stone">Vertical C: Structural Decor</h4>
+                            <p class="font-light leading-relaxed">Benchmark: Safety certification for all temporary structural builds. Freshness guarantee for floral couture for the total duration of the celebration (up to 72 hours).</p>
+                        </div>
+                        <div class="border-l border-gold pl-6">
+                            <h4 class="font-serif text-xl mb-3 text-stone">Vertical D: Logistics</h4>
+                            <p class="font-light leading-relaxed">Benchmark: Secure transport for high-value items (jewellery/cash gifts). GPS tracking for all vendor mobilization fleets.</p>
+                        </div>
+                    </div>
+                `
+            },
+            gdpr: {
+                title: "GDPR & International Compliance",
+                content: `
+                    <h2 class="font-serif text-4xl mb-8 text-stone">GDPR Compliance Notice</h2>
+                    <p class="text-lg mb-8 font-light leading-relaxed text-stone/80">For our international clients and European residents, Elite Events adheres to the General Data Protection Regulation (GDPR) (EU) 2016/679.</p>
+                    <div class="space-y-8 text-stone/70">
+                        <div class="bg-white/5 p-6 rounded border border-white/10">
+                            <h3 class="text-gold uppercase tracking-widest text-xs font-bold mb-2">Right to Erasure</h3>
+                            <p class="font-light text-sm">Clients may request the 'Right to be Forgotten.' Upon request, all digital footprints, guest lists, and planning communications will be permanently deleted from our primary and backup servers.</p>
+                        </div>
+                        <div class="bg-white/5 p-6 rounded border border-white/10">
+                            <h3 class="text-gold uppercase tracking-widest text-xs font-bold mb-2">Data Portability</h3>
+                            <p class="font-light text-sm">Upon request, we will provide a structured, machine-readable export of all collected planning data to the client or their designated new management agency.</p>
+                        </div>
+                        <div class="bg-white/5 p-6 rounded border border-white/10">
+                            <h3 class="text-gold uppercase tracking-widest text-xs font-bold mb-2">Breach Notification</h3>
+                            <p class="font-light text-sm">In the highly unlikely event of a data breach, all affected parties and the relevant supervisory authorities will be notified within 72 hours of detection.</p>
+                        </div>
+                        <div class="bg-white/5 p-6 rounded border border-white/10">
+                            <h3 class="text-gold uppercase tracking-widest text-xs font-bold mb-2">Consent Framework</h3>
+                            <p class="font-light text-sm">We utilize a "Granular Opt-In" system. Consent for photography is separate from consent for guest list management, ensuring you control exactly what we process.</p>
+                        </div>
+                    </div>
+                `
+            }
         };
 
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
-            });
-        }, observerOptions);
+        const modal = document.getElementById('legal-modal');
+        const contentArea = document.getElementById('legal-content');
 
-        document.querySelectorAll('.reveal').forEach(el => {
-            observer.observe(el);
-        });
+        function showLegal(key) {
+            const data = legalData[key];
+            if (!data) return;
+            contentArea.innerHTML = data.content;
+            modal.classList.remove('hidden');
+            modal.classList.add('visible');
+            document.body.style.overflow = 'hidden';
+            modal.scrollTo(0, 0);
+        }
+
+        function closeLegal() {
+            modal.classList.remove('visible');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }, 400);
+        }
+
+        function toggleMenu() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        }
+
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        mobileBtn.addEventListener('click', toggleMenu);
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('active');
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
         const nav = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
-                nav.classList.add('shadow-lg');
+                nav.classList.add('shadow-xl', 'bg-charcoal');
+                nav.classList.remove('bg-charcoal/90');
             } else {
-                nav.classList.remove('shadow-lg');
+                nav.classList.remove('shadow-xl', 'bg-charcoal');
+                nav.classList.add('bg-charcoal/90');
             }
         });
     </script>
