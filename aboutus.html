@@ -1,1 +1,317 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | VARENO Events BD</title>
+    <meta name="description" content="Meet the artisans behind VARENO Events BD. Led by Muntasir Hasan, we are the architects of memory for Bangladesh's most exclusive weddings and corporate events.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: '#D4AF37',
+                        charcoal: '#080808',
+                        white: '#FFFFFF'
+                    },
+                    fontFamily: {
+                        serif: ['"Cinzel"', 'serif'],
+                        sans: ['"Inter"', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'about-hero': "url('https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070&auto=format&fit=crop')",
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- GSAP & Lenis -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
 
+    <style>
+        .hover-underline-animation {
+            display: inline-block;
+            position: relative;
+        }
+        .hover-underline-animation::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 1px;
+            bottom: 0;
+            left: 0;
+            background-color: #D4AF37;
+            transform-origin: bottom right;
+            transition: transform 0.25s ease-out;
+        }
+        .hover-underline-animation:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+
+        #mobile-overlay {
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+        }
+    </style>
+</head>
+<body class="bg-charcoal text-white font-sans antialiased overflow-x-hidden selection:bg-gold selection:text-black">
+
+    <!-- Mobile Navigation Overlay -->
+    <div id="mobile-overlay" class="fixed inset-0 z-[60] bg-charcoal opacity-0 invisible flex flex-col items-center justify-center space-y-8 text-center px-6">
+        <button id="close-mobile-btn" class="absolute top-8 right-8 text-white">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+        <a href="index.html" class="font-serif text-3xl text-white hover:text-gold transition">Home</a>
+        <a href="aboutus.html" class="font-serif text-3xl text-gold transition">About Us</a>
+        <a href="index.html#expertise" class="font-serif text-3xl text-white hover:text-gold transition">Services</a>
+        <a href="index.html#packages" class="font-serif text-3xl text-white hover:text-gold transition">Packages</a>
+        <a href="index.html#contact" class="inline-block mt-8 px-10 py-4 border border-gold text-gold font-serif italic text-2xl hover:bg-gold hover:text-charcoal transition">Book Now</a>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 border-b border-white/5 backdrop-blur-md bg-gradient-to-b from-black/90 to-transparent">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="flex justify-between items-center h-24">
+                <div class="flex-shrink-0">
+                    <a href="index.html" class="font-serif text-xl tracking-[0.2em]">
+                        <span class="text-gold">VARENO</span> <span class="text-white">Events BD</span>
+                    </a>
+                </div>
+                
+                <!-- Desktop Links -->
+                <div class="hidden lg:flex space-x-10 items-center">
+                    <a href="index.html" class="text-[10px] uppercase tracking-[0.2em] text-white/80 hover:text-gold transition">Home</a>
+                    <a href="aboutus.html" class="text-[10px] uppercase tracking-[0.2em] text-gold transition">About Us</a>
+                    <a href="index.html#expertise" class="text-[10px] uppercase tracking-[0.2em] text-white/80 hover:text-gold transition">Services</a>
+                    <a href="index.html#archive" class="text-[10px] uppercase tracking-[0.2em] text-white/80 hover:text-gold transition">Masterworks</a>
+                    <a href="index.html#packages" class="text-[10px] uppercase tracking-[0.2em] text-white/80 hover:text-gold transition">Packages</a>
+                </div>
+
+                <!-- Desktop CTA -->
+                <div class="hidden lg:flex items-center gap-8">
+                    <a href="index.html#contact" class="font-serif italic text-gold text-xl hover-underline-animation">Book Now</a>
+                </div>
+
+                <!-- Mobile Menu Btn -->
+                <div class="lg:hidden flex items-center gap-6">
+                    <button id="mobile-menu-btn" class="text-white hover:text-gold focus:outline-none">
+                        <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 8h16M4 16h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative h-[60vh] min-h-[500px] flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 bg-about-hero bg-cover bg-center bg-fixed"></div>
+        <div class="absolute inset-0 bg-black/70"></div>
+        
+        <div class="relative z-10 text-center px-6 reveal">
+            <div class="mb-6">
+                <span class="text-gold uppercase tracking-[0.4em] text-[10px] md:text-xs font-bold">The Architects of Memory</span>
+            </div>
+            <h1 class="font-serif text-5xl md:text-7xl text-white leading-tight mb-8">
+                About <span class="italic text-gold">Vareno</span>
+            </h1>
+        </div>
+    </header>
+
+    <!-- Founder's Note -->
+    <section class="py-20 md:py-32 bg-charcoal relative">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <!-- Founder Image -->
+                <div class="reveal relative">
+                    <div class="absolute -inset-4 border border-gold/20 z-0"></div>
+                    <div class="relative z-10 aspect-[3/4] overflow-hidden bg-white/5">
+                        <!-- Placeholder for Founder Image -->
+                        <img src="https://raw.githubusercontent.com/muntasir1023/VARENO-Events-BD/main/Muntasir%20Hasan.jpeg" alt="Muntasir Hasan" class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-700">
+                    </div>
+                    <div class="absolute bottom-8 left-8 z-20">
+                        <h3 class="font-serif text-2xl text-white">Muntasir Hasan</h3>
+                        <p class="text-gold text-xs uppercase tracking-widest mt-1">Founder & CEO</p>
+                    </div>
+                </div>
+
+                <!-- Founder Content -->
+                <div class="reveal">
+                    <h2 class="font-serif text-4xl md:text-5xl text-white mb-8 leading-tight">
+                        "We do not just manage events; <br>
+                        <span class="italic text-gold">we curate legacies."</span>
+                    </h2>
+                    <div class="space-y-6 text-white/70 font-light text-lg leading-relaxed">
+                        <p>
+                            Welcome to VARENO Events BD. Since our inception in 2026, our mission has been singular: to elevate the standard of event management in Bangladesh from a service to an art form.
+                        </p>
+                        <p>
+                            I founded VARENO with the belief that every celebration—whether a grand wedding or a corporate summit—holds a distinct narrative. Our role is to articulate that narrative with precision, elegance, and a touch of the extraordinary.
+                        </p>
+                        <p>
+                            We operate not just as planners, but as your partners in memory-making. My team and I are dedicated to the relentless pursuit of perfection, ensuring that when you look back at your special day, you see nothing but a masterpiece.
+                        </p>
+                    </div>
+                    
+                    <!-- Signature/Socials -->
+                    <div class="mt-12 pt-8 border-t border-white/10 flex items-center gap-6">
+                        <span class="font-serif italic text-2xl text-white/40">Muntasir Hasan</span>
+                        <div class="flex gap-4">
+                            <a href="https://www.linkedin.com/in/muntasirhasan1023" target="_blank" class="text-white/40 hover:text-gold transition">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                            </a>
+                            <a href="https://www.facebook.com/share/1EjWLyNSuE/" target="_blank" class="text-white/40 hover:text-gold transition">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Philosophy -->
+    <section class="py-20 md:py-24 bg-white/5 border-y border-white/5">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 text-center">
+            <div class="reveal max-w-3xl mx-auto">
+                <span class="text-gold uppercase tracking-[0.3em] text-[10px] font-bold mb-4 block">Our Ethos</span>
+                <h2 class="font-serif text-3xl md:text-4xl text-white mb-8">
+                    Precision. Elegance. <span class="italic text-gold">Discretion.</span>
+                </h2>
+                <p class="text-white/70 leading-relaxed">
+                    We believe that true luxury lies in the details that go unnoticed, yet are deeply felt. From the seamless flow of a timeline to the perfect ambient lighting, our philosophy is rooted in "Invisible Service"—where the mechanics of the event are hidden, leaving only the magic for you and your guests to experience.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Process / Team Grid -->
+    <section class="py-20 md:py-32 bg-charcoal">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="mb-16 reveal">
+                <h2 class="font-serif text-4xl md:text-5xl text-white">The <span class="italic text-gold">Standard</span></h2>
+                <p class="mt-4 text-white/60 max-w-2xl">Our operational framework is designed to deliver consistency and excellence across every touchpoint.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="reveal border border-gold/10 p-8 bg-white/5 hover:-translate-y-2 transition duration-500">
+                    <div class="text-gold font-serif text-4xl mb-6 italic">01</div>
+                    <h3 class="font-serif text-xl text-white mb-4">Consultation & Design</h3>
+                    <p class="text-white/60 text-sm leading-relaxed">
+                        We begin by listening. Understanding your vision, your aesthetic preferences, and your story allows us to create a bespoke design blueprint unique to you.
+                    </p>
+                </div>
+                <!-- Card 2 -->
+                <div class="reveal delay-100 border border-gold/10 p-8 bg-white/5 hover:-translate-y-2 transition duration-500">
+                    <div class="text-gold font-serif text-4xl mb-6 italic">02</div>
+                    <h3 class="font-serif text-xl text-white mb-4">Logistical Precision</h3>
+                    <p class="text-white/60 text-sm leading-relaxed">
+                        Our team coordinates vendors, manages timelines, and oversees technical requirements with military precision, ensuring zero friction on the day of the event.
+                    </p>
+                </div>
+                <!-- Card 3 -->
+                <div class="reveal delay-200 border border-gold/10 p-8 bg-white/5 hover:-translate-y-2 transition duration-500">
+                    <div class="text-gold font-serif text-4xl mb-6 italic">03</div>
+                    <h3 class="font-serif text-xl text-white mb-4">Flawless Execution</h3>
+                    <p class="text-white/60 text-sm leading-relaxed">
+                        On the day, we are the first to arrive and the last to leave. We manage the atmosphere, the flow, and the experience, allowing you to be a guest at your own event.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-charcoal text-white/30 py-12 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-10">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="font-serif text-2xl tracking-widest mb-6"><span class="text-gold">VARENO</span> <span class="text-white">Events BD</span></div>
+                    <p class="max-w-md text-xs leading-relaxed uppercase tracking-widest text-white/60 mb-2">
+                        The definitive interface for luxury wedding curation in Bangladesh.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-white text-[10px] tracking-widest uppercase mb-6 font-bold">Connect</h4>
+                    <ul class="space-y-4 text-[10px] uppercase tracking-widest">
+                        <li><a href="https://www.instagram.com/vareno_events_bd" target="_blank" class="hover:text-gold transition">Instagram</a></li>
+                        <li><a href="https://www.facebook.com/share/1EjWLyNSuE/" target="_blank" class="hover:text-gold transition">Facebook</a></li>
+                        <li><a href="https://www.linkedin.com/in/muntasirhasan1023" target="_blank" class="hover:text-gold transition">LinkedIn</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white text-[10px] tracking-widest uppercase mb-6 font-bold">Contact</h4>
+                    <p class="text-[10px] uppercase tracking-widest text-gold italic">+880 1706 652 530</p>
+                    <p class="text-[10px] lowercase tracking-widest text-white/60 mt-2">muntasirhasan1023@gmail.com</p>
+                </div>
+            </div>
+            <div class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-[9px] tracking-[0.3em] uppercase">
+                <div>&copy; 2026 VARENO Events BD.</div>
+                <div class="text-white/10 mt-4 md:mt-0">EST. 2026</div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Logic
+        const overlay = document.getElementById('mobile-overlay');
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const closeBtn = document.getElementById('close-mobile-btn');
+
+        function toggleMobileMenu() {
+            const isVisible = overlay.classList.contains('visible');
+            if (isVisible) {
+                overlay.classList.remove('visible', 'opacity-100');
+                overlay.classList.add('invisible', 'opacity-0');
+                document.body.style.overflow = 'auto';
+            } else {
+                overlay.classList.add('visible', 'opacity-100');
+                overlay.classList.remove('invisible', 'opacity-0');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        menuBtn.addEventListener('click', toggleMobileMenu);
+        closeBtn.addEventListener('click', toggleMobileMenu);
+
+        // Initialize Lenis
+        const lenis = new Lenis();
+        lenis.on('scroll', ScrollTrigger.update);
+        gsap.ticker.add((time) => {
+            lenis.raf(time * 1000);
+        });
+        gsap.ticker.lagSmoothing(0);
+
+        // GSAP Reveal Animations
+        gsap.registerPlugin(ScrollTrigger);
+        document.querySelectorAll('.reveal').forEach(el => {
+            gsap.fromTo(el, 
+                { y: 50, opacity: 0 },
+                { y: 0, opacity: 1, duration: 1.2, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 85%' } }
+            );
+        });
+        
+        // Scroll Logic for Nav
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) nav.classList.add('bg-charcoal');
+            else nav.classList.remove('bg-charcoal');
+        });
+    </script>
+</body>
+</html>
