@@ -1,717 +1,488 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KVM2VJF7');</script>
+    
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VARENO Events BD | Full-Service Corporate & Social Event Management</title>
-    <meta name="description" content="Articulating the moment. The premier full-service agency for Weddings, Corporate Events, and Social Milestones in Bangladesh.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- SEO & Metadata -->
+    <link rel="icon" href="https://raw.githubusercontent.com/muntasir1023/eventsbdcomingsoon/main/f58df3c2-ee8d-4604-98c0-6550ea3e1a61-md.png" type="image/png">
+    <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/muntasir1023/eventsbdcomingsoon/main/f58df3c2-ee8d-4604-98c0-6550ea3e1a61-md.png">
+    <title>Vareno Events BD | Signature Luxury Event & Wedding Management</title>
+    <meta name="description" content="Vareno Events BD, led by Founder & CEO Muntasir Hasan, is the premier luxury event management and wedding planning company in Bangladesh.">
     
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        gold: '#D4AF37',
-                        charcoal: '#080808',
-                        white: '#FFFFFF',
-                        cream: '#F5F5F0'
-                    },
-                    fontFamily: {
-                        serif: ['"Cinzel"', 'serif'],
-                        sans: ['"Inter"', 'sans-serif'],
-                    },
-                    backgroundImage: {
-                        'hero-pattern': "url('https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070&auto=format&fit=crop')",
-                    }
-                }
-            }
-        }
-    </script>
-    
-    <!-- GSAP & Lenis -->
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
-
-    <!-- SEO Schema -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "EventPlanner",
-      "name": "VARENO Events BD",
-      "url": "https://varenoeventsbd.com",
+      "@type": "Organization",
+      "name": "Vareno Events BD",
+      "url": "https://varenoeventsbd.com/",
+      "logo": "https://raw.githubusercontent.com/muntasir1023/eventsbdcomingsoon/main/f58df3c2-ee8d-4604-98c0-6550ea3e1a61-md.png",
       "founder": {
         "@type": "Person",
         "name": "Muntasir Hasan",
-        "jobTitle": "Founder & CEO",
-        "sameAs": [
-          "https://www.linkedin.com/in/muntasirhasan1023",
-          "https://www.facebook.com/share/1EjWLyNSuE/",
-          "https://www.instagram.com/vareno_events_bd"
-        ]
-      },
-      "description": "Articulating the moment. The premier full-service agency for Weddings, Corporate Events, and Social Milestones in Bangladesh."
+        "jobTitle": "Founder & CEO"
+      }
     }
     </script>
 
+    <!-- Premium Fonts & Libraries -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.33/dist/lenis.min.js"></script>
+    
     <style>
-        /* GSAP handles reveals now */
-        
-        .hover-underline-animation {
-            display: inline-block;
-            position: relative;
+        :root {
+            --gold: #D4AF37;
+            --dark: #080808;
+            --white: #ffffff;
+            --transition: cubic-bezier(0.23, 1, 0.32, 1);
         }
-        .hover-underline-animation::after {
+
+        /* Smooth Scroll Core */
+        html.lenis { height: auto; }
+        .lenis.lenis-smooth { scroll-behavior: auto !important; }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background-color: var(--dark); 
+            color: var(--white); 
+            font-family: 'Inter', sans-serif; 
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 30px 5vw;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: linear-gradient(to bottom, rgba(8,8,8,0.9), transparent);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-brand {
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            color: var(--gold);
+            font-size: 1.2rem;
+            letter-spacing: 3px;
+            text-decoration: none;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .about-btn {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: var(--white);
+            text-decoration: none;
+            text-transform: uppercase;
+            position: relative;
+            padding: 10px 0;
+            transition: var(--transition);
+        }
+
+        .about-btn::after {
             content: '';
             position: absolute;
-            width: 100%;
-            transform: scaleX(0);
-            height: 1px;
             bottom: 0;
+            right: 0;
+            width: 0;
+            height: 1px;
+            background: var(--gold);
+            transition: width 0.4s var(--transition);
+        }
+
+        .about-btn:hover::after {
+            width: 100%;
             left: 0;
-            background-color: #D4AF37;
-            transform-origin: bottom right;
-            transition: transform 0.25s ease-out;
-        }
-        .hover-underline-animation:hover::after {
-            transform: scaleX(1);
-            transform-origin: bottom left;
         }
 
-        #mobile-overlay {
-            transition: opacity 0.4s ease, visibility 0.4s ease;
-        }
-
-        .interactive-container {
+        /* Hero Section */
+        #hero {
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
             position: relative;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            z-index: -1;
             overflow: hidden;
-            cursor: pointer;
+        }
+
+        .hero-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.4;
+            transform: scale(1.1);
+        }
+
+        .hero-title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+
+        .gold-span { color: var(--gold); }
+
+        /* Section Layouts */
+        .section-padding { padding: 120px 10vw; }
+        .section-header { 
+            font-family: 'Cinzel', serif; 
+            font-size: 2.5rem; 
+            color: var(--gold); 
+            margin-bottom: 60px;
+            text-align: center;
+        }
+
+        .grid-layout {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        /* Cards */
+        .card {
+            padding: 50px 40px;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            transition: all 0.6s var(--transition);
+            position: relative;
+        }
+
+        .card:hover {
+            border-color: var(--gold);
+            background: rgba(212, 175, 55, 0.05);
+            transform: translateY(-10px);
+        }
+
+        .card h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: #aaa;
+            line-height: 1.8;
+        }
+
+        /* Pricing Architecture */
+        .package-tier {
+            text-align: center;
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            padding: 60px 30px;
+        }
+
+        .price-tag {
+            font-family: 'Cinzel', serif;
+            font-size: 2.2rem;
+            color: var(--white);
+            margin: 20px 0;
+        }
+
+        .price-tag span { font-size: 1rem; color: var(--gold); }
+
+        .feature-list {
+            list-style: none;
+            margin: 30px 0;
+            text-align: left;
+        }
+
+        .feature-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            font-size: 0.85rem;
+            color: #ccc;
+            display: flex;
+            align-items: center;
+        }
+
+        .feature-list li::before {
+            content: '✧';
+            color: var(--gold);
+            margin-right: 15px;
+            font-size: 0.7rem;
+        }
+
+        .cta-gold {
+            display: inline-block;
+            padding: 15px 35px;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+
+        .cta-gold:hover {
+            background: var(--gold);
+            color: var(--dark);
+        }
+
+        /* Founder Quote */
+        .quote-section {
+            background: #050505;
+            text-align: center;
+            padding: 150px 10vw;
+        }
+
+        .quote-text {
+            font-size: 1.5rem;
+            line-height: 2;
+            color: #ccc;
+            font-style: italic;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Footer */
+        footer {
+            padding: 100px 5vw;
+            border-top: 1px solid #1a1a1a;
+            text-align: center;
+            background: #000;
+        }
+
+        .footer-logo {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+        }
+
+        .social-wrap {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .social-wrap a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            transition: 0.3s;
+            font-weight: 600;
+        }
+
+        .social-wrap a:hover { color: var(--gold); }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-actions { gap: 20px; }
+            .section-padding { padding: 80px 5vw; }
         }
     </style>
 </head>
-<body class="bg-charcoal text-white font-sans antialiased overflow-x-hidden selection:bg-gold selection:text-black">
+<body>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KVM2VJF7" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-    <!-- Legal Modal -->
-    <div id="legal-modal" class="fixed inset-0 z-[100] hidden bg-charcoal text-white px-6 overflow-y-auto">
-        <div class="sticky top-0 bg-charcoal/95 backdrop-blur-md pt-12 pb-6 z-10 border-b border-white/5">
-            <div class="max-w-4xl mx-auto flex justify-between items-center">
-                <button onclick="closeLegal()" class="flex items-center gap-2 text-gold uppercase tracking-widest text-xs hover:text-white transition group">
-                    <svg class="w-5 h-5 transform group-hover:-translate-x-1 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"/>
-                    </svg>
-                    Close & Return
-                </button>
-            </div>
-        </div>
-        <div class="max-w-4xl mx-auto py-12 pb-32">
-            <div id="legal-content" class="max-w-none prose prose-invert prose-gold"></div>
-        </div>
-    </div>
-
-    <!-- Mobile Navigation Overlay -->
-    <div id="mobile-overlay" class="fixed top-0 right-0 z-[60] h-full w-full md:w-1/2 lg:w-1/3 bg-black/90 backdrop-blur-xl border-l border-white/10 opacity-0 invisible flex flex-col items-center justify-center space-y-6 text-center px-6 transition-all duration-500">
-        <button id="close-mobile-btn" class="absolute top-8 right-8 text-white">
-            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"/></svg>
-        </button>
-        <a href="aboutus.html" class="font-serif text-2xl md:text-3xl text-white hover:text-gold transition tracking-widest uppercase">About Us</a>
-        <a href="#agency" onclick="toggleMobileMenu()" class="font-serif text-2xl md:text-3xl text-white hover:text-gold transition tracking-widest uppercase">The Agency</a>
-        <a href="#exclusivity" onclick="toggleMobileMenu()" class="font-serif text-2xl md:text-3xl text-white hover:text-gold transition tracking-widest uppercase">Exclusivity</a>
-        <a href="#expertise" onclick="toggleMobileMenu()" class="font-serif text-2xl md:text-3xl text-white hover:text-gold transition tracking-widest uppercase">What We Do?</a>
-        <a href="#archive" onclick="toggleMobileMenu()" class="font-serif text-2xl md:text-3xl text-white hover:text-gold transition tracking-widest uppercase">Our Masterworks</a>
-        <a href="#packages" onclick="toggleMobileMenu()" class="font-serif text-2xl md:text-3xl text-white hover:text-gold transition tracking-widest uppercase">Packages</a>
-        <a href="#contact" onclick="toggleMobileMenu()" class="inline-block mt-8 px-8 py-3 border border-gold text-gold font-serif text-xl hover:bg-gold hover:text-charcoal transition uppercase tracking-widest">Book Now</a>
-    </div>
-
-    <!-- Navigation -->
-    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 border-b border-white/5 backdrop-blur-md bg-gradient-to-b from-black/90 to-transparent">
-        <div class="max-w-7xl mx-auto px-6 lg:px-12">
-            <div class="flex justify-between items-center h-24">
-                <div class="flex-shrink-0">
-                    <a href="index.html" class="font-serif text-xl tracking-[0.2em]">
-                        <span class="text-gold">VARENO</span> <span class="text-white">Events BD</span>
-                    </a>
-                </div>
-                
-                <!-- Desktop Links -->
-
-                <!-- Desktop CTA & Socials -->
-                <div class="hidden lg:flex items-center gap-8">
-                    <button onclick="toggleMobileMenu()" class="text-xs uppercase tracking-[0.2em] text-white hover:text-gold transition font-bold mr-4">Menu</button>
-                    <div class="flex gap-4 border-r border-white/10 pr-8">
-                        <a href="https://www.instagram.com/vareno_events_bd?igsh=MTl3MDhudHJ2NXhpdA==" target="_blank" rel="noopener noreferrer" class="text-white/40 hover:text-gold transition">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                        </a>
-                        <a href="https://www.facebook.com/share/1EjWLyNSuE/" target="_blank" rel="noopener noreferrer" class="text-white/40 hover:text-gold transition">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg>
-                        </a>
-                        <a href="https://www.linkedin.com/in/muntasirhasan1023?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener noreferrer" class="text-white/40 hover:text-gold transition">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                        </a>
-                    </div>
-                    <a href="#contact" class="font-serif italic text-gold text-xl hover-underline-animation">Book Now</a>
-                </div>
-
-                <!-- Mobile Header CTA & Menu Btn -->
-                <div class="lg:hidden flex items-center gap-6">
-                    <button id="mobile-menu-btn" class="text-white hover:text-gold focus:outline-none">
-                        <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 8h16M4 16h16" />
-                        </svg>
-                    </button>
-                </div>
-            </div>
+    <nav>
+        <a href="index.html" class="nav-brand">VARENO <span style="color:white">EVENTS BD</span></a>
+        <div class="nav-actions">
+            <a href="aboutus.html" class="about-btn">About Us</a>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <header class="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden">
-        <div class="absolute inset-0 bg-hero-pattern bg-cover bg-center"></div>
-        <div class="absolute inset-0 bg-black/60"></div>
-        
-        <div class="relative z-10 text-center px-6 reveal">
-            <div class="mb-6">
-                <span class="text-gold uppercase tracking-[0.4em] text-[10px] md:text-xs font-bold">Premier Full-Service Agency</span>
-                <div class="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-4 mt-2 text-white/80 font-light text-xs md:text-sm tracking-widest">
-                    <span>ESTABLISHED 2026</span>
-                    <span class="hidden md:block w-1 h-1 bg-gold rounded-full"></span>
-                    <span>NATIONWIDE SERVICE</span>
-                </div>
+    <div id="content">
+        <!-- Hero Section -->
+        <section id="hero">
+            <div class="hero-bg">
+                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2000" alt="Vareno Luxury Banner" id="hero-img">
             </div>
-            <h1 class="font-serif text-5xl md:text-7xl lg:text-9xl text-white leading-tight mb-8">
-                Defining <br>
-                <span class="italic text-gold">Moments</span>
-            </h1>
-            <div class="h-16 w-[1px] bg-gold mx-auto mt-8"></div>
-        </div>
-    </header>
+            <div class="hero-content">
+                <p style="letter-spacing: 8px; font-size: 0.7rem; margin-bottom: 20px; color: var(--gold); font-weight: 600;">EST. 2026</p>
+                <h1 class="hero-title">REDEFINING <br><span class="gold-span">ELEGANCE</span></h1>
+                <p style="max-width: 600px; margin: 0 auto; color: #aaa; line-height: 1.8; font-size: 1rem;">The definitive interface for luxury wedding curation and strategic corporate excellence in Bangladesh.</p>
+            </div>
+        </section>
 
-    <!-- Exclusivity Manifesto -->
-    <section id="exclusivity" class="py-16 md:py-24 bg-cream text-charcoal relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <div class="reveal">
-                    <div class="mb-6 flex items-center gap-3">
-                        <span class="text-gold uppercase tracking-[0.3em] text-[10px] font-bold">Why Choose Us</span>
-                        <span class="w-8 h-[1px] bg-charcoal/10"></span>
-                    </div>
-                    <h2 class="font-serif text-4xl md:text-5xl mb-6 leading-tight">
-                        Precision for <br>
-                        <span class="italic text-gold">Every Occasion.</span>
-                    </h2>
-                    <div class="space-y-4 text-charcoal/70 font-light text-lg leading-relaxed">
-                        <p>VARENO Events BD is your partner for <strong>comprehensive event management</strong>. We handle the complexity so you can enjoy the moment.</p>
-                        <p>We specialize in <span class="text-charcoal font-normal italic">Weddings, Anniversaries, Birthdays, Corporate Meetings, and Conferences</span>. Our full-service approach ensures that whether it is a private milestone or a professional gathering, the execution is flawless.</p>
-                    </div>
+        <!-- Signature Services Section -->
+        <section class="section-padding">
+            <h2 class="section-header">Our Signature Services</h2>
+            <div class="grid-layout">
+                <div class="card">
+                    <h3>Royal Weddings</h3>
+                    <p>Handling every intricate detail of high-profile unions, from venue curation to bespoke decor that defines a legacy.</p>
                 </div>
-                <div class="reveal border border-charcoal/5 p-4 bg-transparent group interactive-container">
-                    <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover grayscale opacity-40 group-hover:opacity-100 group-hover:grayscale-0 transition duration-1000" alt="Private Banquet">
+                <div class="card">
+                    <h3>Corporate Summits</h3>
+                    <p>Meticulous strategic planning for grand openings, galas, and brand activations that demand perfection.</p>
+                </div>
+                <div class="card">
+                    <h3>Private Galas</h3>
+                    <p>Exclusive social gatherings curated with an artistic touch, ensuring intimacy and luxury at every turn.</p>
+                </div>
+                <div class="card">
+                    <h3>Destination Planning</h3>
+                    <p>Global logistics management for events that transcend borders, maintaining Vareno standards anywhere in the world.</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- The Agency -->
-    <section id="agency" class="py-16 md:py-24 bg-charcoal relative">
-        <div class="max-w-4xl mx-auto px-6 lg:px-12 text-center">
-            <div class="reveal">
-                <h2 class="font-serif text-4xl md:text-5xl text-white mb-6 leading-snug">
-                    Comprehensive Event <br>
-                    Management for the <span class="italic text-gold">Discerning.</span>
-                </h2>
-                <div class="w-12 h-[1px] bg-white mb-6 mx-auto"></div>
-                <p class="text-white/80 text-lg leading-relaxed font-light">
-                    VARENO provides a seamless interface for both luxury social milestones and professional corporate engagements. We blend creative design with logistical precision to ensure your Wedding, Birthday, or Corporate Conference is a masterwork.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- What We Do? -->
-    <section id="expertise" class="py-16 md:py-24 bg-charcoal">
-        <div class="max-w-7xl mx-auto px-6 lg:px-12">
-            <div class="mb-10 reveal">
-                <h2 class="font-serif text-4xl md:text-5xl text-white">Our <span class="italic text-gold">Services</span></h2>
-                <div class="mt-4 max-w-4xl text-white/80 text-sm leading-relaxed space-y-3">
-                    <p><strong>Social Milestones:</strong> Celebrate life’s greatest moments. From the grandeur of a traditional Wedding to the intimacy of Birthdays and Marriage Anniversaries, we create the perfect atmosphere for your family and friends.</p>
-                    <p><strong>Corporate Excellence:</strong> Focus on your business while we handle the rest. We provide end-to-end management for Corporate Meetings, Conferences, and Celebration Parties, ensuring a professional reflection of your brand.</p>
-                    <p class="italic text-gold"><strong>The VARENO Full-Suite:</strong> Gourmet Catering, Professional Light & Sound, Bespoke Decorations, and Photography/Videography.</p>
-                </div>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
-                <div class="group reveal h-full border border-gold/10 p-6 hover:-translate-y-2 transition duration-500 bg-white/5">
-                    <div class="font-serif text-gold text-2xl italic mb-4">01.</div>
-                    <h3 class="font-serif text-xl text-white mb-4">Bespoke Decoration</h3>
-                    <div class="aspect-[4/5] bg-charcoal overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-500" alt="Venue">
-                    </div>
-                </div>
-                <div class="group reveal h-full border border-gold/10 p-6 hover:-translate-y-2 transition duration-500 bg-white/5">
-                    <div class="font-serif text-gold text-2xl italic mb-4">02.</div>
-                    <h3 class="font-serif text-xl text-white mb-4">Photography & Video</h3>
-                    <div class="aspect-[4/5] bg-charcoal overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-500" alt="Cinematography">
-                    </div>
-                </div>
-                <div class="group reveal h-full border border-gold/10 p-6 hover:-translate-y-2 transition duration-500 bg-white/5">
-                    <div class="font-serif text-gold text-2xl italic mb-4">03.</div>
-                    <h3 class="font-serif text-xl text-white mb-4">Gourmet Catering</h3>
-                    <div class="aspect-[4/5] bg-charcoal overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1555244162-803834f70033?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-500" alt="Catering">
-                    </div>
-                </div>
-                <div class="group reveal h-full border border-gold/10 p-6 hover:-translate-y-2 transition duration-500 bg-white/5">
-                    <div class="font-serif text-gold text-2xl italic mb-4">04.</div>
-                    <h3 class="font-serif text-xl text-white mb-4">Light, Sound & Media</h3>
-                    <div class="aspect-[4/5] bg-charcoal overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-500" alt="Floral">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Our Masterworks -->
-    <section id="archive" class="py-16 md:py-24 bg-charcoal text-white">
-        <div class="max-w-7xl mx-auto px-6 lg:px-12">
-            <div class="mb-10 reveal">
-                <h2 class="font-serif text-4xl md:text-5xl mb-4">Our <span class="italic text-gold">Masterworks</span></h2>
-                <p class="text-xs uppercase tracking-widest text-white/40 animate-pulse">Hover or touch images to reveal the living color</p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="group reveal">
-                    <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=1000&auto=format&fit=crop" class="w-full aspect-[4/5] object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 mb-6">
-                    <h3 class="font-serif text-2xl mb-2 group-hover:text-gold transition">The Royal Union</h3>
-                </div>
-                <div class="group reveal delay-100">
-                    <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?q=80&w=1000&auto=format&fit=crop" class="w-full aspect-[4/5] object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 mb-6">
-                    <h3 class="font-serif text-2xl mb-2 group-hover:text-gold transition">Estate Celebration</h3>
-                </div>
-                <div class="group reveal delay-200">
-                    <img src="https://images.unsplash.com/photo-1507504031003-b417219a0fde?q=80&w=1000&auto=format&fit=crop" class="w-full aspect-[4/5] object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 mb-6">
-                    <h3 class="font-serif text-2xl mb-2 group-hover:text-gold transition">Palace Protocol</h3>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Our Packages -->
-    <section id="packages" class="py-16 md:py-24 bg-cream">
-        <div class="max-w-7xl mx-auto px-6 lg:px-12">
-            <!-- Section Header -->
-            <div class="text-center mb-12 reveal">
-                <h2 class="font-serif text-4xl md:text-5xl text-charcoal mb-2">Our Event <span class="italic text-gold">Packages</span></h2>
-                <p class="text-lg text-charcoal/80 font-light">Thoughtfully Designed. Professionally Managed.</p>
-                <div class="w-12 h-[1px] bg-charcoal my-6 mx-auto"></div>
-                <p class="max-w-3xl mx-auto text-charcoal/70">
-                    At VARENO Events BD, we offer carefully curated event packages to suit different needs and budgets. All packages include complete coordination and supervision so you can enjoy your event stress-free.
-                </p>
-                <p class="mt-4 text-sm text-gold italic">📍 Venue rent is not included in any package.</p>
-            </div>
-
-            <!-- Package Toggles -->
-            <div class="flex justify-center gap-8 mb-10 reveal">
-                <button onclick="switchTab('social')" id="tab-social" class="text-xl md:text-2xl font-serif italic border-b-2 border-gold pb-2 text-charcoal transition-all focus:outline-none">Social Events</button>
-                <button onclick="switchTab('corporate')" id="tab-corporate" class="text-xl md:text-2xl font-serif italic border-b-2 border-transparent pb-2 text-charcoal/40 hover:text-charcoal transition-all focus:outline-none">Corporate Events</button>
-            </div>
-
-            <!-- Social Content -->
-            <div id="social-content" class="space-y-16">
-                <!-- General & Premium Packages -->
-                <div class="reveal">
-                    <div class="text-center mb-8">
-                        <h3 class="font-serif text-3xl md:text-4xl text-charcoal">🌿 General &amp; Premium Event Packages</h3>
-                        <p class="mt-2 text-charcoal/60">From intimate gatherings to grand celebrations.</p>
-                    </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-                        <!-- Card: General - Basic -->
-                        <div class="border border-charcoal/5 p-8 bg-white h-full flex flex-col group hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
-                            <h4 class="font-serif text-xl text-charcoal mb-1">General – Basic</h4>
-                            <p class="text-sm text-charcoal/60 mb-4">Simple • Elegant • Budget-Friendly</p>
-                            <p class="text-sm text-charcoal/70 mb-1"><span class="font-semibold">Best for:</span> Small events & intimate gatherings</p>
-                            <p class="text-sm text-charcoal/70 mb-6"><span class="font-semibold">Guest Capacity:</span> Up to 200</p>
-                            
-                            <p class="text-xs uppercase tracking-widest text-charcoal/50 mb-3">Includes:</p>
-                            <ul class="space-y-2 text-charcoal/80 text-sm mb-8 flex-grow">
-                                <li class="flex items-start"><span class="mr-3 mt-1.5 h-1.5 w-1.5 bg-gold rounded-full shrink-0"></span> Basic stage décor & entrance setup</li>
-                                <li class="flex items-start"><span class="mr-3 mt-1.5 h-1.5 w-1.5 bg-gold rounded-full shrink-0"></span> Table centerpieces</li>
-                                <li class="flex items-start"><span class="mr-3 mt-1.5 h-1.5 w-1.5 bg-gold rounded-full shrink-0"></span> 3-item catering (standard menu)</li>
-                                <li class="flex items-start"><span class="mr-3 mt-1.5 h-1.5 w-1.5 bg-gold rounded-full shrink-0"></span> Basic lighting & sound system</li>
-                                <li class="flex items-start"><span class="mr-3 mt-1.5 h-1.5 w-1.5 bg-gold rounded-full shrink-0"></span> 1 professional photographer (4–5 hours)</li>
-                            </ul>
-                        
-                            <div class="mt-auto pt-6 border-t border-charcoal/10 text-center">
-                                <p class="text-xs uppercase tracking-widest text-charcoal/50 mb-2">Price Range</p>
-                                <p class="font-serif text-2xl text-gold italic">BDT ৳1,80,000 – ৳2,40,000</p>
-                            </div>
-                        </div>
-                        <!-- Card: General - Standard -->
-                        <div class="border border-charcoal/5 p-8 bg-white h-full flex flex-col group hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
-                            <h4 class="font-serif text-xl text-charcoal mb-1">General – Standard</h4>
-                            <p class="text-sm text-charcoal/60 mb-4">Best for: Wedding receptions, parties</p>
-                            <p class="text-sm text-charcoal/70 mb-6"><span class="font-semibold">Guest Capacity:</span> Up to 300–350</p>
-                            
-                            <p class="text-xs uppercase tracking-widest text-charcoal/50 mb-3">Includes:</p>
-                            <ul class="space-y-2 text-charcoal/80 text-sm mb-8 flex-grow">
-                                <li class="flex items-start"><span class="mr-3 mt-1.5 h-1.5 w-1.5 bg-gold rounded-full shrink-0"></span> Themed stage décor & backdrop</li>
-                                <li class="flex items-start"><span class="mr-3 mt-1.5 h-1.5 w-1.5 bg-gold rounded-full shrink-0"></span> Welcome gate & enhanced décor elements</li>
-                                <li class="flex items-start"><span class="mr-3 mt-1.5 h-1.5 w-1.5 bg-gold rounded-full shrink-0"></span> 4-item buffet catering & Professional serving staff</li>
-                                <li class="flex items-start"><span class="mr-3 mt-1.5 h-1.5 w-1.5 bg-gold rounded-full shrink-0"></span> DJ sound system & ambient lighting</li>
-                                <li class="flex items-start"><span class="mr-3 mt-1.5 h-1.5 w-1.5 bg-gold rounded-full shrink-0"></span> 1 photographer + 1 videographer</li>
-                            </ul>
-                        
-                            <div class="mt-auto pt-6 border-t border-charcoal/10 text-center">
-                                <p class="text-xs uppercase tracking-widest text-charcoal/50 mb-2">Price Range</p>
-                                <p class="font-serif text-2xl text-gold italic">BDT ৳2,80,000 – ৳3,80,000</p>
-                            </div>
-                        </div>
-                        <!-- Card: Premium - Elegant -->
-                        <div class="border border-charcoal/5 p-8 bg-white h-full flex flex-col group hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
-                            <h4 class="font-serif text-xl text-charcoal mb-1">Premium – Elegant</h4>
-                            <p class="text-sm text-charcoal/60 mb-4">Luxury • Style • Flawless Execution</p>
-                            <p class="text-sm text-charcoal/70 mb-1"><span class="font-semibold">Best for:</span> Wedding receptions, anniversaries</p>
-                            <p class="text-sm text-charcoal/70 mb-6"><span class="font-semibold">Guest Capacity:</span> Up to 400–500</p>
-                            
-                            <p class="text-xs uppercase tracking-widest text-charcoal/50 mb-3">Includes:</p>
-                            <ul class="space-y-2 text-charcoal/80 text-sm mb-8 flex-grow">
-                                <li class="flex items-start"><span class="mr-3 mt-1.5 h-1.5 w-1.5 bg-gold rounded-full shrink-0"></span> Premium stage décor (fresh & artificial flower mix)</li>
-                                <li class="flex items-start"><span class="mr-3 mt-1.5 h-1.5 w-1.5 bg-gold rounded-full shrink-0"></span> Custom color theme & VIP seating décor</li>
-                                <li class="flex items-start"><span class="mr-3 mt-1.5 h-1.5 w-1.5 bg-gold rounded-full shrink-0"></span> 5-item premium buffet menu & Uniformed waiters</li>
-                                <li class="flex items-start"><span class="mr-3 mt-1.5 h-1.5 w-1.5 bg-gold rounded-full shrink-0"></span> Intelligent lighting & DJ sound</li>
-                                <li class="flex items-start"><span class="mr-3 mt-1.5 h-1.5 w-1.5 bg-gold rounded-full shrink-0"></span> 2 professional photographers & Cinematic videography</li>
-                            </ul>
-                        
-                            <div class="mt-auto pt-6 border-t border-charcoal/10 text-center">
-                                <p class="text-xs uppercase tracking-widest text-charcoal/50 mb-2">Price Range</p>
-                                <p class="font-serif text-2xl text-gold italic">BDT ৳5,50,000 – ৳7,50,000</p>
-                            </div>
-                        </div>
-                        <!-- Card: Premium - Signature Luxury -->
-                        <div class="border border-charcoal/5 p-8 bg-white h-full flex flex-col group hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
-                            <h4 class="font-serif text-xl text-charcoal mb-1">Premium – Signature Luxury</h4>
-                            <p class="text-sm text-charcoal/60 mb-4">Best for: High-end weddings & large celebrations</p>
-                            <p class="text-sm text-charcoal/70 mb-6"><span class="font-semibold">Guest Capacity:</span> 600–800+</p>
-                            
-                            <p class="text-xs uppercase tracking-widest text-charcoal/50 mb-3">Includes:</p>
-                            <ul class="space-y-2 text-charcoal/80 text-sm mb-8 flex-grow">
-                                <li class="flex items-start"><span class="mr-3 mt-1.5 h-1.5 w-1.5 bg-gold rounded-full shrink-0"></span> Luxury custom stage design & full hall styling</li>
-                                <li class="flex items-start"><span class="mr-3 mt-1.5 h-1.5 w-1.5 bg-gold rounded-full shrink-0"></span> LED backdrop & limited ceiling décor</li>
-                                <li class="flex items-start"><span class="mr-3 mt-1.5 h-1.5 w-1.5 bg-gold rounded-full shrink-0"></span> 6–7 premium food items with live cooking station(s)</li>
-                                <li class="flex items-start"><span class="mr-3 mt-1.5 h-1.5 w-1.5 bg-gold rounded-full shrink-0"></span> Advanced lighting & concert-grade sound</li>
-                                <li class="flex items-start"><span class="mr-3 mt-1.5 h-1.5 w-1.5 bg-gold rounded-full shrink-0"></span> Cinematic wedding film & drone shots (venue permitting)</li>
-                            </ul>
-                        
-                            <div class="mt-auto pt-6 border-t border-charcoal/10 text-center">
-                                <p class="text-xs uppercase tracking-widest text-charcoal/50 mb-2">Price Range</p>
-                                <p class="font-serif text-2xl text-gold italic">BDT ৳9,00,000 – ৳13,00,000+</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Wedding Packages -->
-                <div class="reveal">
-                    <div class="text-center mb-8">
-                        <h3 class="font-serif text-3xl md:text-4xl text-charcoal">💍 Wedding-Only <span class="italic text-gold">Packages</span></h3>
-                        <p class="mt-2 text-charcoal/60">Because weddings deserve special attention.</p>
-                    </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <!-- Card: Wedding Basic -->
-                        <div class="border border-charcoal/5 p-8 bg-white h-full flex flex-col group hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
-                            <h4 class="font-serif text-xl text-charcoal mb-6">Wedding Basic</h4>
-                            <ul class="space-y-2 text-charcoal/80 text-sm mb-8 flex-grow">
-                                <li class="flex items-start"><span class="mr-3 mt-1.5 h-1.5 w-1.5 bg-gold rounded-full shrink-0"></span> Stage décor & entrance gate</li>
-                                <li class="flex items-start"><span class="mr-3 mt-1.5 h-1.5 w-1.5 bg-gold rounded-full shrink-0"></span> 3-item wedding menu</li>
-                                <li class="flex items-start"><span class="mr-3 mt-1.5 h-1.5 w-1.5 bg-gold rounded-full shrink-0"></span> Basic light & sound</li>
-                                <li class="flex items-start"><span class="mr-3 mt-1.5 h-1.5 w-1.5 bg-gold rounded-full shrink-0"></span> 1 photographer</li>
-                            </ul>
-                            <div class="mt-auto pt-6 border-t border-charcoal/10 text-center">
-                                <p class="font-serif text-2xl text-gold italic">BDT ৳2,20,000 – ৳2,90,000</p>
-                            </div>
-                        </div>
-                        <!-- Card: Wedding Classic -->
-                        <div class="border border-charcoal/5 p-8 bg-white h-full flex flex-col group hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
-                            <h4 class="font-serif text-xl text-charcoal mb-6">Wedding Classic</h4>
-                            <ul class="space-y-2 text-charcoal/80 text-sm mb-8 flex-grow">
-                                <li class="flex items-start"><span class="mr-3 mt-1.5 h-1.5 w-1.5 bg-gold rounded-full shrink-0"></span> Premium stage décor</li>
-                                <li class="flex items-start"><span class="mr-3 mt-1.5 h-1.5 w-1.5 bg-gold rounded-full shrink-0"></span> 4–5 item buffet</li>
-                                <li class="flex items-start"><span class="mr-3 mt-1.5 h-1.5 w-1.5 bg-gold rounded-full shrink-0"></span> DJ sound & ambient lighting</li>
-                                <li class="flex items-start"><span class="mr-3 mt-1.5 h-1.5 w-1.5 bg-gold rounded-full shrink-0"></span> Photography & videography</li>
-                            </ul>
-                            <div class="mt-auto pt-6 border-t border-charcoal/10 text-center">
-                                <p class="font-serif text-2xl text-gold italic">BDT ৳4,50,000 – ৳6,00,000</p>
-                            </div>
-                        </div>
-                        <!-- Card: Wedding Royal -->
-                        <div class="border border-charcoal/5 p-8 bg-white h-full flex flex-col group hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
-                            <h4 class="font-serif text-xl text-charcoal mb-6">Wedding Royal</h4>
-                            <ul class="space-y-2 text-charcoal/80 text-sm mb-8 flex-grow">
-                                <li class="flex items-start"><span class="mr-3 mt-1.5 h-1.5 w-1.5 bg-gold rounded-full shrink-0"></span> Luxury décor & LED backdrop</li>
-                                <li class="flex items-start"><span class="mr-3 mt-1.5 h-1.5 w-1.5 bg-gold rounded-full shrink-0"></span> Premium buffet + live station</li>
-                                <li class="flex items-start"><span class="mr-3 mt-1.5 h-1.5 w-1.5 bg-gold rounded-full shrink-0"></span> Cinematic film & drone coverage</li>
-                                <li class="flex items-start"><span class="mr-3 mt-1.5 h-1.5 w-1.5 bg-gold rounded-full shrink-0"></span> Full on-site coordination team</li>
-                            </ul>
-                            <div class="mt-auto pt-6 border-t border-charcoal/10 text-center">
-                                <p class="font-serif text-2xl text-gold italic">BDT ৳8,50,000 – ৳12,00,000+</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Corporate Content -->
-            <div id="corporate-content" class="hidden space-y-16">
-                <!-- Corporate Packages -->
-                <div class="reveal">
-                    <div class="text-center mb-8">
-                        <h3 class="font-serif text-3xl md:text-4xl text-charcoal">🏢 Corporate Event <span class="italic text-gold">Packages</span></h3>
-                        <p class="mt-2 text-charcoal/60">Professional • Branded • Well-Coordinated</p>
-                    </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <!-- Card: Corporate Basic -->
-                        <div class="border border-charcoal/5 p-8 bg-white h-full flex flex-col group hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
-                            <h4 class="font-serif text-xl text-charcoal mb-6">Corporate Basic</h4>
-                            <ul class="space-y-2 text-charcoal/80 text-sm mb-8 flex-grow">
-                                <li class="flex items-start"><span class="mr-3 mt-1.5 h-1.5 w-1.5 bg-gold rounded-full shrink-0"></span> Stage & branding backdrop</li>
-                                <li class="flex items-start"><span class="mr-3 mt-1.5 h-1.5 w-1.5 bg-gold rounded-full shrink-0"></span> Sound system & microphone</li>
-                                <li class="flex items-start"><span class="mr-3 mt-1.5 h-1.5 w-1.5 bg-gold rounded-full shrink-0"></span> Basic lighting</li>
-                                <li class="flex items-start"><span class="mr-3 mt-1.5 h-1.5 w-1.5 bg-gold rounded-full shrink-0"></span> Event coordination</li>
-                            </ul>
-                            <div class="mt-auto pt-6 border-t border-charcoal/10 text-center">
-                                <p class="font-serif text-2xl text-gold italic">BDT ৳1,50,000 – ৳2,20,000</p>
-                            </div>
-                        </div>
-                        <!-- Card: Corporate Professional -->
-                        <div class="border border-charcoal/5 p-8 bg-white h-full flex flex-col group hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
-                            <h4 class="font-serif text-xl text-charcoal mb-6">Corporate Professional</h4>
-                            <ul class="space-y-2 text-charcoal/80 text-sm mb-8 flex-grow">
-                                <li class="flex items-start"><span class="mr-3 mt-1.5 h-1.5 w-1.5 bg-gold rounded-full shrink-0"></span> Custom stage & branding</li>
-                                <li class="flex items-start"><span class="mr-3 mt-1.5 h-1.5 w-1.5 bg-gold rounded-full shrink-0"></span> LED screen support</li>
-                                <li class="flex items-start"><span class="mr-3 mt-1.5 h-1.5 w-1.5 bg-gold rounded-full shrink-0"></span> Buffet catering</li>
-                                <li class="flex items-start"><span class="mr-3 mt-1.5 h-1.5 w-1.5 bg-gold rounded-full shrink-0"></span> Photography & videography</li>
-                            </ul>
-                            <div class="mt-auto pt-6 border-t border-charcoal/10 text-center">
-                                <p class="font-serif text-2xl text-gold italic">BDT ৳3,50,000 – ৳5,00,000</p>
-                            </div>
-                        </div>
-                        <!-- Card: Corporate Premium -->
-                        <div class="border border-charcoal/5 p-8 bg-white h-full flex flex-col group hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
-                            <h4 class="font-serif text-xl text-charcoal mb-6">Corporate Premium</h4>
-                            <ul class="space-y-2 text-charcoal/80 text-sm mb-8 flex-grow">
-                                <li class="flex items-start"><span class="mr-3 mt-1.5 h-1.5 w-1.5 bg-gold rounded-full shrink-0"></span> Full venue styling</li>
-                                <li class="flex items-start"><span class="mr-3 mt-1.5 h-1.5 w-1.5 bg-gold rounded-full shrink-0"></span> Advanced audio-visual setup</li>
-                                <li class="flex items-start"><span class="mr-3 mt-1.5 h-1.5 w-1.5 bg-gold rounded-full shrink-0"></span> Professional hospitality team</li>
-                                <li class="flex items-start"><span class="mr-3 mt-1.5 h-1.5 w-1.5 bg-gold rounded-full shrink-0"></span> Media-ready photo & video coverage</li>
-                            </ul>
-                            <div class="mt-auto pt-6 border-t border-charcoal/10 text-center">
-                                <p class="font-serif text-2xl text-gold italic">BDT ৳6,50,000 – ৳9,00,000+</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Add-ons and Notes (Common) -->
-            <div class="reveal text-center max-w-3xl mx-auto pt-12 mt-16 border-t border-charcoal/10">
-                    <h4 class="font-serif text-2xl text-charcoal mb-6">Optional <span class="italic text-gold">Add-Ons</span></h4>
-                    <p class="text-charcoal/70 mb-8">
-                        Drone videography, LED wall, Live food stations, Floral upgrades, Extra photography / videography hours.
-                        <br>
-                        <span class="text-sm italic">(Pricing varies based on requirement.)</span>
-                    </p>
-    
-                    <h4 class="font-serif text-2xl text-charcoal mb-6">Important <span class="italic text-gold">Notes</span></h4>
-                    <ul class="space-y-2 text-charcoal/70 text-left inline-block">
-                        <li class="flex items-start"><span class="mr-3 mt-1.5 h-1.5 w-1.5 bg-gold rounded-full shrink-0"></span> Prices may vary based on guest count, event date, customization, and location.</li>
-                        <li class="flex items-start"><span class="mr-3 mt-1.5 h-1.5 w-1.5 bg-gold rounded-full shrink-0"></span> Final quotation is shared after understanding your exact requirements.</li>
-                        <li class="flex items-start"><span class="mr-3 mt-1.5 h-1.5 w-1.5 bg-gold rounded-full shrink-0"></span> Advance payment is required to confirm booking.</li>
+        <!-- Investment Tiers Section -->
+        <section class="section-padding" style="background: #050505;">
+            <h2 class="section-header">Investment Tiers</h2>
+            <div class="grid-layout">
+                <!-- Tier 1 -->
+                <div class="card package-tier">
+                    <p style="letter-spacing: 4px; font-size: 0.7rem; color: var(--gold); font-weight: 700;">THE VINTAGE</p>
+                    <div class="price-tag">৳ 85,000 <span>+</span></div>
+                    <ul class="feature-list">
+                        <li>Standard Stage & Premium Decor</li>
+                        <li>Basic Lighting Architecture</li>
+                        <li>Professional Photography Team</li>
+                        <li>Dedicated Event Coordination</li>
+                        <li>Premium Sound Logistics</li>
                     </ul>
-    
-                    <div class="mt-12">
-                        <p class="font-serif text-xl italic text-charcoal/80">Let us handle the details, so you can enjoy the moment.</p>
-                        <p class="mt-2 text-sm uppercase tracking-widest text-gold">Your Day. Our Responsibility.</p>
-                    </div>
+                    <a href="https://wa.me/8801706652530" class="cta-gold">Secure Date</a>
                 </div>
-        </div>
-    </section>
 
-    <!-- Contact -->
-    <section id="contact" class="py-20 md:py-24 bg-charcoal text-white text-center">
-        <div class="max-w-4xl mx-auto px-6 reveal">
-            <p class="text-gold uppercase tracking-[0.2em] text-sm mb-8">Strictly By Appointment</p>
-            <h2 class="font-serif text-5xl md:text-7xl mb-8">Secure Your <span class="italic text-gold">Date</span></h2>
-            <div class="flex flex-col md:flex-row justify-center gap-12 mb-10 font-serif italic text-2xl">
-                <a href="mailto:muntasirhasan1023@gmail.com" class="hover:text-gold transition text-white font-sans not-italic lowercase">muntasirhasan1023@gmail.com</a>
-                <a href="tel:+8801706652530" class="hover:text-gold transition text-white">+880 1706 652 530</a>
-                <a href="https://wa.me/8801706652530" target="_blank" class="hover:text-gold transition text-white">WhatsApp</a>
-            </div>
-        </div>
-    </section>
+                <!-- Tier 2 (Highlighted) -->
+                <div class="card package-tier" style="border-color: var(--gold); background: rgba(212, 175, 55, 0.05);">
+                    <p style="letter-spacing: 4px; font-size: 0.7rem; color: var(--gold); font-weight: 700;">THE SIGNATURE</p>
+                    <div class="price-tag">৳ 180,000 <span>+</span></div>
+                    <ul class="feature-list">
+                        <li>Bespoke Thematic Stage Architecture</li>
+                        <li>Cinematic 4K Videography</li>
+                        <li>Advanced Atmospheric Lighting & FX</li>
+                        <li>Full RSVP & Guest Concierge</li>
+                        <li>Luxury Floral Arrangement & Curation</li>
+                    </ul>
+                    <a href="https://wa.me/8801706652530" class="cta-gold" style="background: var(--gold); color: #000;">Most Preferred</a>
+                </div>
 
-    <!-- Social Connection Bar -->
-    <div class="bg-charcoal pb-12">
-        <div class="max-w-7xl mx-auto px-6 border-t border-white/10 pt-12">
-            <div class="flex flex-wrap justify-center gap-8 md:gap-16">
-                <!-- Instagram -->
-                <a href="https://www.instagram.com/vareno_events_bd?igsh=MTl3MDhudHJ2NXhpdA==" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 text-stone/40 hover:text-gold transition group p-2">
-                    <svg class="w-6 h-6 md:w-5 md:h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                    <span class="text-[10px] md:text-[9px] uppercase tracking-[0.2em] group-hover:text-gold">Instagram</span>
-                </a>
-                <!-- Facebook -->
-                <a href="https://www.facebook.com/share/1EjWLyNSuE/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 text-stone/40 hover:text-gold transition group p-2">
-                    <svg class="w-6 h-6 md:w-5 md:h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg>
-                    <span class="text-[10px] md:text-[9px] uppercase tracking-[0.2em] group-hover:text-gold">Facebook</span>
-                </a>
-                <!-- LinkedIn -->
-                <a href="https://www.linkedin.com/in/muntasirhasan1023?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 text-stone/40 hover:text-gold transition group p-2">
-                    <svg class="w-6 h-6 md:w-5 md:h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                    <span class="text-[10px] md:text-[9px] uppercase tracking-[0.2em] group-hover:text-gold">LinkedIn</span>
-                </a>
-                <!-- WhatsApp -->
-                <a href="https://wa.me/8801706652530" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 text-stone/40 hover:text-gold transition group p-2">
-                    <svg class="w-6 h-6 md:w-5 md:h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.463 1.065 2.876 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
-                    <span class="text-[10px] md:text-[9px] uppercase tracking-[0.2em] group-hover:text-gold">WhatsApp</span>
-                </a>
+                <!-- Tier 3 -->
+                <div class="card package-tier">
+                    <p style="letter-spacing: 4px; font-size: 0.7rem; color: var(--gold); font-weight: 700;">THE LEGACY</p>
+                    <div class="price-tag">Custom <span>Only</span></div>
+                    <ul class="feature-list">
+                        <li>End-to-End Luxury Concierge Service</li>
+                        <li>International Vendor & Asset Sourcing</li>
+                        <li>Celebrity Guest & Artist Management</li>
+                        <li>Exclusive 3D Stage Visual Mapping</li>
+                        <li>Global Destination Management</li>
+                    </ul>
+                    <a href="https://wa.me/8801706652530" class="cta-gold">Consult Founder</a>
+                </div>
             </div>
-        </div>
+        </section>
+
+        <!-- Leadership Quote Section -->
+        <section class="quote-section">
+            <h2 class="section-header" style="margin-bottom: 30px;">Visionary Leadership</h2>
+            <p class="quote-text">"At Vareno Events BD, we don't just plan events; we architect memories that stand the test of time. Every occasion is a brand statement of elegance."</p>
+            <p style="margin-top: 40px; color: var(--gold); font-family: 'Cinzel', serif; font-weight: 700; letter-spacing: 2px;">— MUNTASIR HASAN, FOUNDER & CEO</p>
+        </section>
+
+        <footer>
+            <div class="footer-logo">VARENO EVENTS BD</div>
+            <div class="social-wrap">
+                <a href="https://www.facebook.com/share/1EjWLyNSuE/">FACEBOOK</a>
+                <a href="https://www.instagram.com/vareno_events_bd">INSTAGRAM</a>
+                <a href="https://www.linkedin.com/in/muntasirhasan1023">LINKEDIN</a>
+                <a href="https://wa.me/8801706652530">WHATSAPP</a>
+            </div>
+            <div style="margin-bottom: 20px;">
+                <a href="tel:+8801706652530" style="color: var(--gold); text-decoration: none; font-size: 1.1rem; font-weight: 700;">+880 1706 652530</a>
+            </div>
+            <p style="font-size: 0.7rem; color: #444; letter-spacing: 2px; text-transform: uppercase;">Owned by Muntasir Hasan. All Rights Reserved.</p>
+            <p style="font-size: 0.6rem; color: #333; margin-top: 10px;">© 2026 VARENO EVENTS BD.</p>
+        </footer>
     </div>
 
-    <!-- Footer -->
-    <footer class="bg-charcoal text-white/30 py-12 border-t border-white/5">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-10">
-                <div class="col-span-1 md:col-span-2">
-                    <div class="font-serif text-2xl tracking-widest mb-6"><span class="text-gold">VARENO</span> <span class="text-white">Events BD</span></div>
-                    <p class="max-w-md text-xs leading-relaxed uppercase tracking-widest text-white/60 mb-2">
-                        The definitive interface for luxury wedding curation in Bangladesh. Meticulously managing the memories that define your legacy.
-                    </p>
-                </div>
-                <div>
-                    <h4 class="text-white text-[10px] tracking-widest uppercase mb-6 font-bold">Legal Governance</h4>
-                    <ul class="space-y-4 text-[10px] uppercase tracking-widest">
-                        <li><button onclick="showLegal('privacy')" class="hover:text-gold transition">Privacy Governance</button></li>
-                        <li><button onclick="showLegal('liability')" class="hover:text-gold transition">Service Liability</button></li>
-                        <li><button onclick="showLegal('payments')" class="hover:text-gold transition">Payment Protocols</button></li>
-                        <li><button onclick="showLegal('ethics')" class="hover:text-gold transition">Ethical Conduct</button></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-white text-[10px] tracking-widest uppercase mb-6 font-bold">Operating Region</h4>
-                    <p class="text-[10px] uppercase tracking-widest text-gold italic">Available All Over Bangladesh</p>
-                </div>
-            </div>
-            <div class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-[9px] tracking-[0.3em] uppercase">
-                <div>&copy; 2026 VARENO Events BD.</div>
-                <div class="text-white/10 mt-4 md:mt-0">EST. 2026</div>
-            </div>
-        </div>
-    </footer>
-
     <script>
-        const legalData = {
-            privacy: { content: `<h2 class="font-serif text-4xl mb-8 text-white italic">Privacy Governance</h2><p class="text-white/80 mb-4">At VARENO, client confidentiality is paramount. All planning data, guest lists, and venue schematics are handled through encrypted channels and stored on secure, private servers.</p><p class="text-white/80 mb-4">We strictly adhere to non-disclosure agreements (NDAs) for high-profile clients. We do not utilize client imagery, names, or specific event details for marketing or portfolio purposes without explicit, written media releases signed post-event.</p><p class="text-white/80">Your personal data is never sold or shared with third-party vendors beyond what is strictly necessary for event execution.</p>` },
-            liability: { content: `<h2 class="font-serif text-4xl mb-8 text-white italic">Service Liability</h2><p class="text-white/80 mb-4">VARENO Events BD maintains comprehensive general liability insurance. We accept responsibility for the safety and structural integrity of all decor and installations managed directly by our team.</p><p class="text-white/80 mb-4">While we rigorously vet all artisanal vendors and third-party suppliers, direct product defects or service failures from external entities are managed through our strict resolution protocol, ensuring client interests are protected.</p><p class="text-white/80">Force Majeure clauses are included in all contracts to protect both parties in the event of unforeseen national emergencies or natural disasters.</p>` },
-            payments: { content: `<h2 class="font-serif text-4xl mb-8 text-white italic">Payment Protocols</h2><p class="text-white/80 mb-4">To secure our exclusive services, a non-refundable mobilization fee (booking money) is required upon contract signing. This reserves your date and initiates the design process.</p><p class="text-white/80 mb-4">Subsequent payments are structured in staggered milestones: 50% due during the planning phase, and the remaining balance due 7 days prior to the event date.</p><p class="text-white/80">All transactions are conducted in BDT and are fully compliant with NBR regulations. VAT and Tax are applicable as per government laws.</p>` },
-            ethics: { content: `<h2 class="font-serif text-4xl mb-8 text-white italic">Ethical Conduct</h2><p class="text-white/80 mb-4">We operate with a zero-tolerance policy for bribery or kickbacks from vendors. Our recommendations are based solely on quality and suitability for your event.</p><p class="text-white/80 mb-4">We conduct fair labor audits to ensuring all construction teams, artisans, and support staff are paid fair wages and work in safe conditions.</p><p class="text-white/80">We are committed to sustainability and respect for the diverse cultural heritage of Bangladesh, ensuring our events are inclusive and environmentally conscious where possible.</p>` }
-        };
-
-        const modal = document.getElementById('legal-modal');
-        const contentArea = document.getElementById('legal-content');
-
-        function showLegal(key) {
-            contentArea.innerHTML = legalData[key].content;
-            modal.classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeLegal() {
-            modal.classList.add('hidden');
-            document.body.style.overflow = 'auto';
-        }
-
-        // Mobile Menu Logic
-        const overlay = document.getElementById('mobile-overlay');
-        const menuBtn = document.getElementById('mobile-menu-btn');
-        const closeBtn = document.getElementById('close-mobile-btn');
-
-        function toggleMobileMenu() {
-            const isVisible = overlay.classList.contains('visible');
-            if (isVisible) {
-                overlay.classList.remove('visible', 'opacity-100');
-                overlay.classList.add('invisible', 'opacity-0');
-                document.body.style.overflow = 'auto';
-            } else {
-                overlay.classList.add('visible', 'opacity-100');
-                overlay.classList.remove('invisible', 'opacity-0');
-                document.body.style.overflow = 'hidden';
-            }
-        }
-
-        menuBtn.addEventListener('click', toggleMobileMenu);
-        closeBtn.addEventListener('click', toggleMobileMenu);
-
-        // Initialize Lenis
-        const lenis = new Lenis();
-        lenis.on('scroll', ScrollTrigger.update);
-        gsap.ticker.add((time) => {
-            lenis.raf(time * 1000);
+        // High-Performance Smooth Scroll (Lenis)
+        const lenis = new Lenis({
+            duration: 1.5,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            smoothWheel: true,
+            wheelMultiplier: 1.1
         });
-        gsap.ticker.lagSmoothing(0);
 
-        // Fix for anchor links with Lenis
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                lenis.scrollTo(this.getAttribute('href'));
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+
+        // GSAP Initialization
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Hero Parallax Effect
+        gsap.to("#hero-img", {
+            yPercent: 15,
+            ease: "none",
+            scrollTrigger: {
+                trigger: "#hero",
+                start: "top top",
+                end: "bottom top",
+                scrub: true
+            }
+        });
+
+        // Entrance Animations for Cards
+        gsap.utils.toArray(".card").forEach((card) => {
+            gsap.from(card, {
+                opacity: 0,
+                y: 50,
+                duration: 1.2,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: card,
+                    start: "top 90%",
+                }
             });
         });
 
-        // GSAP Reveal Animations
-        gsap.registerPlugin(ScrollTrigger);
-        document.querySelectorAll('.reveal').forEach(el => {
-            gsap.fromTo(el, 
-                { y: 50, opacity: 0 },
-                { y: 0, opacity: 1, duration: 1.2, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 85%' } }
-            );
-        });
-        
-        // Scroll Logic for Nav
-        window.addEventListener('scroll', () => {
-            const nav = document.getElementById('navbar');
-            if (window.scrollY > 50) nav.classList.add('bg-charcoal');
-            else nav.classList.remove('bg-charcoal');
-        });
-
-        // Tab Switching Logic
-        function switchTab(tab) {
-            const socialBtn = document.getElementById('tab-social');
-            const corpBtn = document.getElementById('tab-corporate');
-            const socialContent = document.getElementById('social-content');
-            const corpContent = document.getElementById('corporate-content');
-
-            if (tab === 'social') {
-                socialBtn.classList.remove('text-charcoal/40', 'border-transparent');
-                socialBtn.classList.add('text-charcoal', 'border-gold');
-                corpBtn.classList.add('text-charcoal/40', 'border-transparent');
-                corpBtn.classList.remove('text-charcoal', 'border-gold');
-                socialContent.classList.remove('hidden');
-                corpContent.classList.add('hidden');
-            } else {
-                corpBtn.classList.remove('text-charcoal/40', 'border-transparent');
-                corpBtn.classList.add('text-charcoal', 'border-gold');
-                socialBtn.classList.add('text-charcoal/40', 'border-transparent');
-                socialBtn.classList.remove('text-charcoal', 'border-gold');
-                corpContent.classList.remove('hidden');
-                socialContent.classList.add('hidden');
+        // Fade In Quote
+        gsap.from(".quote-text", {
+            opacity: 0,
+            y: 30,
+            duration: 1.5,
+            scrollTrigger: {
+                trigger: ".quote-section",
+                start: "top 70%"
             }
-        }
+        });
     </script>
 </body>
 </html>
