@@ -3,238 +3,261 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | VARENO Events BD</title>
+    <meta name="description" content="Meet the artisans behind VARENO Events BD. Led by Muntasir Hasan, we are the architects of memory for Bangladesh's most exclusive weddings and corporate events.">
     
-    <title>About Us - VARENO Events BD | Muntasir Hasan</title>
-    <meta name="description" content="Meet Muntasir Hasan, Founder & CEO of VARENO Events BD. A premium event management agency in Bangladesh specializing in luxury weddings and corporate events.">
-    <meta name="keywords" content="VARENO Events BD, Muntasir Hasan, Event Management Bangladesh, Luxury Weddings Dhaka, Corporate Events Bangladesh">
-    <meta name="author" content="Muntasir Hasan">
-
-    <link rel="icon" href="https://raw.githubusercontent.com/muntasir1023/eventsbdcomingsoon/main/index.html_files/67bb63494639f285260173.png" type="image/png">
-
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "VARENO Events BD",
-      "url": "https://www.varenoeventsbd.com",
-      "logo": "https://raw.githubusercontent.com/muntasir1023/eventsbdcomingsoon/main/index.html_files/67bb63494639f285260173.png",
-      "description": "VARENO Events BD is a premium event management agency founded and owned by Muntasir Hasan.",
-      "founder": {
-        "@type": "Person",
-        "name": "Muntasir Hasan",
-        "jobTitle": "Founder & CEO",
-        "sameAs": [
-          "https://www.linkedin.com/in/muntasirhasan1023",
-          "https://www.facebook.com/share/1EjWLyNSuE/",
-          "https://www.instagram.com/vareno_events_bd"
-        ]
-      }
-    }
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: '#D4AF37',
+                        charcoal: '#080808',
+                        white: '#FFFFFF',
+                        cream: '#F5F5F0'
+                    },
+                    fontFamily: {
+                        serif: ['"Cinzel"', 'serif'],
+                        sans: ['"Inter"', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'about-hero': "url('https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070&auto=format&fit=crop')",
+                    }
+                }
+            }
+        }
     </script>
+    
+    <!-- GSAP & Lenis -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
 
     <style>
-        :root {
-            --brand-gold: #D4AF37; 
-            --brand-gold-light: #F1D38E;
-            --primary-black: #0E0E0E; 
-            --secondary-black: #1A1A1A;
-            --text-silver: #E0E0E0;
-            --text-gray: #A0A0A0;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            background-color: var(--primary-black);
-            color: var(--text-silver);
-            font-family: 'Inter', sans-serif;
-            line-height: 1.8;
-            overflow-x: hidden;
-        }
-
-        .brand-font { font-family: 'Cinzel', serif; letter-spacing: 2px; text-transform: uppercase; }
-
-        .gold-gradient-text {
-            background: linear-gradient(to bottom, var(--brand-gold-light) 0%, var(--brand-gold) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-weight: 700;
-        }
-
-        nav {
-            background-color: rgba(14, 14, 14, 0.98);
-            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-            padding: 20px 8%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .nav-logo {
-            text-decoration: none;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .nav-logo .main-name { font-weight: 900; font-size: 1.8rem; letter-spacing: 4px; }
-        .nav-logo .sub-name { font-size: 0.6rem; color: #fff; letter-spacing: 5px; margin-top: -5px; }
-
-        .nav-links { display: flex; gap: 30px; }
-        .nav-links a {
-            color: var(--text-silver);
-            text-decoration: none;
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            transition: 0.3s;
-        }
-        .nav-links a:hover, .nav-links a.active { color: var(--brand-gold); }
-
-        .container { max-width: 1200px; margin: 0 auto; padding: 80px 8% 40px; }
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-
-        h2 { font-family: 'Cinzel', serif; color: var(--brand-gold); font-size: 2rem; margin-bottom: 25px; letter-spacing: 3px; }
-        p { margin-bottom: 20px; color: var(--text-gray); font-weight: 300; }
-
-        .founder-box {
-            background: var(--secondary-black);
-            padding: 50px;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            text-align: center;
+        .hover-underline-animation {
+            display: inline-block;
             position: relative;
         }
-
-        .role-tag {
-            color: var(--brand-gold);
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            font-size: 0.8rem;
-            display: block;
-            margin-bottom: 20px;
+        .hover-underline-animation::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 1px;
+            bottom: 0;
+            left: 0;
+            background-color: #D4AF37;
+            transform-origin: bottom right;
+            transition: transform 0.25s ease-out;
+        }
+        .hover-underline-animation:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
         }
 
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            background: var(--brand-gold);
-            color: #000;
-            padding: 16px 32px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 0.8rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            transition: 0.4s;
-            margin: 10px;
-        }
-
-        .btn:hover { background: #fff; transform: translateY(-3px); }
-
-        footer {
-            padding: 100px 8% 50px;
-            text-align: center;
-            background: #050505;
-            border-top: 1px solid rgba(212, 175, 55, 0.1);
-        }
-
-        .footer-socials { display: flex; justify-content: center; gap: 30px; margin: 40px 0; }
-        .footer-socials a { color: #fff; font-size: 1.5rem; transition: 0.3s; }
-        .footer-socials a:hover { color: var(--brand-gold); transform: scale(1.2); }
-
-        .copyright { font-size: 0.7rem; color: #444; letter-spacing: 2px; text-transform: uppercase; }
-
-        @media (max-width: 900px) {
-            .grid { grid-template-columns: 1fr; gap: 40px; }
-            .nav-links { display: none; }
+        #mobile-overlay {
+            transition: opacity 0.4s ease, visibility 0.4s ease;
         }
     </style>
-    
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6271031901455849" crossorigin="anonymous"></script>
 </head>
-<body>
+<body class="bg-charcoal text-white font-sans antialiased overflow-x-hidden selection:bg-gold selection:text-black">
 
-    <nav>
-        <a href="index.html" class="nav-logo brand-font">
-            <span class="main-name gold-gradient-text">VARENO</span>
-            <span class="sub-name">EVENTS BD</span>
-        </a>
-        <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="about.html" class="active">About Us</a>
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-transparent">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="flex justify-between items-center h-24">
+                <div class="flex-shrink-0">
+                    <a href="index.html" class="font-serif text-xl tracking-[0.2em]">
+                        <span class="text-gold">VARENO</span> <span class="text-white">Events BD</span>
+                    </a>
+                </div>
+                
+                <!-- Desktop Links -->
+
+                <!-- Right Side: Home Button -->
+                <div>
+                    <a href="index.html" class="text-xs uppercase tracking-[0.2em] text-white hover:text-gold transition font-bold">Home</a>
+                </div>
+            </div>
         </div>
     </nav>
 
-    <div class="container">
-        <div class="grid">
-            <div>
-                <h2>The Agency</h2>
-                <p>Based in Bangladesh, <strong>VARENO Events BD</strong> is a signature event management firm defined by luxury and flawless execution.</p>
-                <p>From destination weddings to corporate summits, our work is characterized by the unique "VARENO" touch—sophisticated design and meticulous planning.</p>
+    <!-- Hero Section -->
+    <header class="relative h-[50vh] min-h-[400px] flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 bg-about-hero bg-cover bg-center"></div>
+        <div class="absolute inset-0 bg-black/70"></div>
+        
+        <div class="relative z-10 text-center px-6 reveal">
+            <div class="mb-6">
+                <span class="text-gold uppercase tracking-[0.4em] text-[10px] md:text-xs font-bold">The Architects of Memory</span>
             </div>
-            <div style="border-left: 1px solid rgba(212, 175, 55, 0.2); padding-left: 40px;">
-                <h2>Our Philosophy</h2>
-                <p>We believe an event is more than a gathering; it is a brand statement. Our philosophy centers on "Bespoke Excellence," ensuring that no two events are ever the same.</p>
-            </div>
+            <h1 class="font-serif text-5xl md:text-7xl text-white leading-tight mb-8">
+                About <span class="italic text-gold">VARENO Events BD</span>
+            </h1>
         </div>
-    </div>
+    </header>
 
-    <div class="container" style="padding-top: 0;">
-        <div class="grid">
-            <div class="founder-box">
-                <h3 class="gold-gradient-text brand-font">Muntasir Hasan</h3>
-                <span class="role-tag">Founder & CEO</span>
-                <p style="color: #fff; font-size: 0.9rem;">The primary architect behind VARENO Events BD's success.</p>
-                <div style="margin-top: 20px;">
-                    <a href="https://www.linkedin.com/in/muntasirhasan1023" target="_blank" class="btn">
-                        <i class="fab fa-linkedin-in"></i> LinkedIn
-                    </a>
-                    <a href="https://wa.me/8801706652530" target="_blank" class="btn">
-                        <i class="fab fa-whatsapp"></i> WhatsApp
-                    </a>
+    <!-- Founder's Note -->
+    <section class="py-16 md:py-24 bg-charcoal relative">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Founder Image -->
+                <div class="reveal relative">
+                    <div class="absolute -inset-4 border border-gold/20 z-0"></div>
+                    <div class="relative z-10 aspect-[3/4] overflow-hidden bg-white/5">
+                        <!-- Placeholder for Founder Image -->
+                        <img src="https://raw.githubusercontent.com/muntasir1023/VARENO-Events-BD/main/Muntasir%20Hasan.jpeg" loading="lazy" alt="Muntasir Hasan" class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-700">
+                    </div>
+                    <div class="absolute bottom-8 left-8 z-20">
+                        <h3 class="font-serif text-2xl text-white">Muntasir Hasan</h3>
+                        <p class="text-gold text-xs uppercase tracking-widest mt-1">Founder & CEO</p>
+                    </div>
+                </div>
+
+                <!-- Founder Content -->
+                <div class="reveal">
+                    <h2 class="font-serif text-4xl md:text-5xl text-white mb-8 leading-tight">
+                        "We do not just manage events; <br>
+                        <span class="italic text-gold">we curate legacies."</span>
+                    </h2>
+                    <div class="space-y-6 text-white/70 font-light text-lg leading-relaxed">
+                        <p>
+                            Welcome to VARENO Events BD. Since our inception in 2026, our mission has been singular: to elevate the standard of event management in Bangladesh from a service to an art form.
+                        </p>
+                        <p>
+                            I founded VARENO with the belief that every celebration—whether a grand wedding or a corporate summit—holds a distinct narrative. Our role is to articulate that narrative with precision, elegance, and a touch of the extraordinary.
+                        </p>
+                        <p>
+                            We operate not just as planners, but as your partners in memory-making. My team and I are dedicated to the relentless pursuit of perfection, ensuring that when you look back at your special day, you see nothing but a masterpiece.
+                        </p>
+                    </div>
+                    
+                    <!-- Signature/Socials -->
+                    <div class="mt-12 pt-8 border-t border-white/10 flex items-center gap-6">
+                        <span class="font-serif italic text-2xl text-white/40">Muntasir Hasan</span>
+                        <div class="flex gap-4">
+                            <a href="https://www.linkedin.com/in/muntasirhasan1023" target="_blank" class="text-white/40 hover:text-gold transition">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                            </a>
+                            <a href="https://www.facebook.com/muntasir.hasan.984/" target="_blank" class="text-white/40 hover:text-gold transition">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div>
-                <h2>Leadership</h2>
-                <p>As the Founder and CEO, <strong>Muntasir Hasan</strong> established VARENO Events BD with a vision to elevate the standards of event production in Bangladesh.</p>
-                <p>His leadership has transformed VARENO into a trusted partner for clients who seek nothing less than perfection.</p>
+        </div>
+    </section>
+
+    <!-- Our Philosophy -->
+    <section class="py-12 md:py-16 bg-cream border-y border-charcoal/5">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 text-center">
+            <div class="reveal max-w-3xl mx-auto">
+                <span class="text-gold uppercase tracking-[0.3em] text-[10px] font-bold mb-4 block">Our Ethos</span>
+                <h2 class="font-serif text-3xl md:text-4xl text-charcoal mb-8">
+                    Precision. Elegance. <span class="italic text-gold">Discretion.</span>
+                </h2>
+                <p class="text-charcoal/70 leading-relaxed">
+                    We believe that true luxury lies in the details that go unnoticed, yet are deeply felt. From the seamless flow of a timeline to the perfect ambient lighting, our philosophy is rooted in "Invisible Service"—where the mechanics of the event are hidden, leaving only the magic for you and your guests to experience.
+                </p>
             </div>
         </div>
-    </div>
+    </section>
 
-    <div class="container" style="text-align: center; padding-top: 0; padding-bottom: 80px;">
-        <h2 style="font-size: 1.5rem; margin-bottom: 30px;">Elevate Your Experience</h2>
-        <a href="index.html" class="btn">
-            <i class="fas fa-arrow-left"></i> Return to Homepage
-        </a>
-    </div>
+    <!-- The Process / Team Grid -->
+    <section class="py-16 md:py-24 bg-charcoal">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="mb-10 reveal">
+                <h2 class="font-serif text-4xl md:text-5xl text-white">The <span class="italic text-gold">Standard</span></h2>
+                <p class="mt-4 text-white/60 max-w-2xl">Our operational framework is designed to deliver consistency and excellence across every touchpoint.</p>
+            </div>
 
-    <footer>
-        <div class="footer-logo nav-logo brand-font">
-            <span class="main-name gold-gradient-text">VARENO</span>
-            <span class="sub-name">EVENTS BD</span>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="reveal border border-gold/10 p-8 bg-white/5 hover:-translate-y-2 transition duration-500">
+                    <div class="text-gold font-serif text-4xl mb-6 italic">01</div>
+                    <h3 class="font-serif text-xl text-white mb-4">Consultation & Design</h3>
+                    <p class="text-white/60 text-sm leading-relaxed">
+                        We begin by listening. Understanding your vision, your aesthetic preferences, and your story allows us to create a bespoke design blueprint unique to you.
+                    </p>
+                </div>
+                <!-- Card 2 -->
+                <div class="reveal delay-100 border border-gold/10 p-8 bg-white/5 hover:-translate-y-2 transition duration-500">
+                    <div class="text-gold font-serif text-4xl mb-6 italic">02</div>
+                    <h3 class="font-serif text-xl text-white mb-4">Logistical Precision</h3>
+                    <p class="text-white/60 text-sm leading-relaxed">
+                        Our team coordinates vendors, manages timelines, and oversees technical requirements with military precision, ensuring zero friction on the day of the event.
+                    </p>
+                </div>
+                <!-- Card 3 -->
+                <div class="reveal delay-200 border border-gold/10 p-8 bg-white/5 hover:-translate-y-2 transition duration-500">
+                    <div class="text-gold font-serif text-4xl mb-6 italic">03</div>
+                    <h3 class="font-serif text-xl text-white mb-4">Flawless Execution</h3>
+                    <p class="text-white/60 text-sm leading-relaxed">
+                        On the day, we are the first to arrive and the last to leave. We manage the atmosphere, the flow, and the experience, allowing you to be a guest at your own event.
+                    </p>
+                </div>
+            </div>
         </div>
-        
-        <p style="color: var(--brand-gold); letter-spacing: 2px; font-size: 0.8rem; margin-top: 10px;">OWNED & OPERATED BY MUNTASIR HASAN</p>
-        
-        <div class="footer-socials">
-            <a href="https://www.facebook.com/share/1EjWLyNSuE/" target="_blank"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://www.instagram.com/vareno_events_bd" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.linkedin.com/in/muntasirhasan1023" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-            <a href="https://wa.me/8801706652530" target="_blank"><i class="fab fa-whatsapp"></i></a>
-        </div>
+    </section>
 
-        <p class="copyright">© 2026 VARENO Events BD. All Rights Reserved.</p>
+    <!-- Footer -->
+    <footer class="bg-charcoal text-white/30 py-12 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-10">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="font-serif text-2xl tracking-widest mb-6"><span class="text-gold">VARENO</span> <span class="text-white">Events BD</span></div>
+                    <p class="max-w-md text-xs leading-relaxed uppercase tracking-widest text-white/60 mb-2">
+                        The definitive interface for luxury wedding curation in Bangladesh.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-white text-[10px] tracking-widest uppercase mb-6 font-bold">Connect</h4>
+                    <ul class="space-y-4 text-[10px] uppercase tracking-widest">
+                        <li><a href="https://www.instagram.com/vareno_events_bd" target="_blank" class="hover:text-gold transition">Instagram</a></li>
+                        <li><a href="https://www.facebook.com/share/1EjWLyNSuE/" target="_blank" class="hover:text-gold transition">Facebook</a></li>
+                        <li><a href="https://www.linkedin.com/in/muntasirhasan1023" target="_blank" class="hover:text-gold transition">LinkedIn</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white text-[10px] tracking-widest uppercase mb-6 font-bold">Contact</h4>
+                    <p class="text-[10px] uppercase tracking-widest text-gold italic">+880 1706 652 530</p>
+                    <p class="text-[10px] lowercase tracking-widest text-white/60 mt-2">muntasirhasan1023@gmail.com</p>
+                </div>
+            </div>
+            <div class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-[9px] tracking-[0.3em] uppercase">
+                <div>Founder & CEO: Muntasir Hasan <br>© 2026 VARENO EVENTS BD. ALL RIGHTS RESERVED.</div>
+                <div class="text-white/10 mt-4 md:mt-0">EST. 2026</div>
+            </div>
+        </div>
     </footer>
 
+    <script>
+        // Initialize Lenis
+        const lenis = new Lenis();
+        lenis.on('scroll', ScrollTrigger.update);
+        gsap.ticker.add((time) => {
+            lenis.raf(time * 1000);
+        });
+        gsap.ticker.lagSmoothing(0);
+
+        // GSAP Reveal Animations
+        gsap.registerPlugin(ScrollTrigger);
+        document.querySelectorAll('.reveal').forEach(el => {
+            gsap.fromTo(el, 
+                { y: 50, opacity: 0 },
+                { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 90%' } }
+            );
+        });
+        
+    </script>
 </body>
 </html>
