@@ -108,8 +108,21 @@
     </style>
     <link rel="icon" type="image/svg+xml" href="https://raw.githubusercontent.com/muntasir1023/VARENO-Events-BD/main/VE.svg">
     <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/muntasir1023/VARENO-Events-BD/main/VE.svg">
+    <style>
+        #springCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; 
+    pointer-events: none;
+    display: block;
+        }
+    </style>
 </head>
 <body class="bg-charcoal text-white font-sans antialiased overflow-x-hidden selection:bg-gold selection:text-black">
+    <canvas id="springCanvas"></canvas>
 
     <!-- Legal Modal -->
     <div id="legal-modal" class="fixed inset-0 z-[100] hidden bg-charcoal text-white px-6 overflow-y-auto">
@@ -742,6 +755,95 @@
                 socialContent.classList.add('hidden');
             }
         }
+    </script>
+    <script>
+    const canvas = document.getElementById('springCanvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    const particleCount = 45; 
+
+    function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+
+    window.addEventListener('resize', resize);
+    resize();
+
+    class Particle {
+        constructor() {
+            this.reset();
+            this.y = Math.random() * canvas.height; 
+        }
+
+        reset() {
+            this.x = Math.random() * canvas.width;
+            this.y = -30;
+            this.size = Math.random() * 7 + 3;
+            this.speed = Math.random() * 0.8 + 0.4;
+            this.wind = Math.random() * 0.5 - 0.25;
+            this.rotation = Math.random() * 360;
+            this.rotationSpeed = Math.random() * 1.2 - 0.6;
+            
+            const rand = Math.random();
+            if (rand > 0.6) {
+                this.type = 'petal'; 
+                const pinks = ['#fce4ec', '#f8bbd0', '#f48fb1', '#fadadd'];
+                this.color = pinks[Math.floor(Math.random() * pinks.length)];
+            } else if (rand > 0.2) {
+                this.type = 'leaf';  
+                const greens = ['#e8f5e9', '#c8e6c9', '#a5d6a7', '#dcedc8'];
+                this.color = greens[Math.floor(Math.random() * greens.length)];
+            } else {
+                this.type = 'whitePetal';
+                this.color = '#ffffff';
+            }
+
+            this.oscillationSpeed = Math.random() * 0.02 + 0.01;
+            this.oscillationOffset = Math.random() * Math.PI * 2;
+        }
+
+        draw() {
+            ctx.save();
+            ctx.translate(this.x, this.y);
+            ctx.rotate(this.rotation * Math.PI / 180);
+            ctx.beginPath();
+            if (this.type === 'leaf') {
+                ctx.moveTo(0, 0);
+                ctx.quadraticCurveTo(this.size, this.size, 0, this.size * 2);
+                ctx.quadraticCurveTo(-this.size, this.size, 0, 0);
+            } else {
+                ctx.moveTo(0, 0);
+                ctx.bezierCurveTo(this.size, -this.size, this.size * 1.5, this.size, 0, this.size * 1.2);
+                ctx.bezierCurveTo(-this.size * 1.5, this.size, -this.size, -this.size, 0, 0);
+            }
+            ctx.fillStyle = this.color;
+            ctx.globalAlpha = 0.6;
+            ctx.fill();
+            ctx.restore();
+        }
+
+        update() {
+            this.y += this.speed;
+            this.x += this.wind + Math.sin(this.y * this.oscillationSpeed + this.oscillationOffset) * 0.5;
+            this.rotation += this.rotationSpeed;
+            if (this.y > canvas.height + 30) this.reset();
+        }
+    }
+
+    function init() {
+        particles = [];
+        for (let i = 0; i < particleCount; i++) particles.push(new Particle());
+    }
+
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach(p => { p.update(); p.draw(); });
+        requestAnimationFrame(animate);
+    }
+
+    init();
+    animate();
     </script>
 </body>
 </html>
